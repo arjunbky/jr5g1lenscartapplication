@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.ILensesDao;
 
-import com.cg.lenscartappln.entity.Frames;
+
 import com.cg.lenscartappln.entity.Lenses;
+import com.cg.lenscartappln.utils.LensesNotFoundException;
 //lenses services
 @Service
 public class LensesServices implements ILensesService{
@@ -33,12 +34,13 @@ public class LensesServices implements ILensesService{
 	}
 
 	@Override
-	public String deleteLenses(int lens_id) {
+	public String deleteLenses(int lens_id) throws LensesNotFoundException {
 		if(dao.existsById(lens_id)) {
 			dao.deleteById(lens_id);
 			return "Lens removed";
 		}
-		return "Lens not found";
+		else 
+			throw new LensesNotFoundException();
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.service.CustomerService;
+import com.cg.lenscartappln.utils.CustomerNotFoundException;
 
 
 @RestController
@@ -36,7 +37,7 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping("/deletecustomer")
-	public ResponseEntity<String> deleteCustomer(@RequestBody int customer_id){
+	public ResponseEntity<String> deleteCustomer(@RequestBody int customer_id) throws CustomerNotFoundException{
 		String str=service.deleteCustomer(customer_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

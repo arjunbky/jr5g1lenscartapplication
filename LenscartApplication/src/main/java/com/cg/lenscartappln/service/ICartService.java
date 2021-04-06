@@ -2,17 +2,18 @@
 
 import java.util.List;
 
+import com.cg.lenscartappln.dto.CartDto;
+import com.cg.lenscartappln.entity.Cart;
 //import com.cg.lenscart.dto.FramesDto;
 //import com.cg.lenscart.dto.LensesDto;
-import com.cg.lenscartappln.entity.Frames;
-import com.cg.lenscartappln.entity.Lenses;
+
+import com.cg.lenscartappln.utils.CartNotFoundException;
 
 public interface ICartService {
 	
-//	public String deleteCart(int cart_id) ;
-////
-////	String deletecartLenses(int lens_id);
-////
-////	String deletecartFrames(int frame_id);
+	public String deleteCart(int cart_id) throws CartNotFoundException ;
+	public void addCart(CartDto cartdto)throws CartNotFoundException;
+    public List<Cart> getAllCarts()throws CartNotFoundException;
+
 
 }

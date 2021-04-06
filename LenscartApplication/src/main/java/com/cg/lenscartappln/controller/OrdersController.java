@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.entity.Orders;
 import com.cg.lenscartappln.service.OrdersService;
+import com.cg.lenscartappln.utils.OrdersNotFoundException;
 
 @RestController
 @RequestMapping("/order")
@@ -36,7 +37,7 @@ public class OrdersController {
 		return new ResponseEntity<List<Orders>>(ordersList,HttpStatus.OK);
 	}
 	@DeleteMapping("/deleteorder")
-	public ResponseEntity<String> deleteOrders(@RequestBody int order_id){
+	public ResponseEntity<String> deleteOrders(@RequestBody int order_id) throws OrdersNotFoundException{
 		String str=service.deleteOrder(order_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

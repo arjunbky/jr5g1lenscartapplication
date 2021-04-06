@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 //import com.cg.lenscart.dto.LensesDto;
 import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.service.LensesServices;
+import com.cg.lenscartappln.utils.LensesNotFoundException;
 
 @RestController
 @RequestMapping("/lenses")
@@ -27,7 +28,7 @@ public class LensesController {
 	@PostMapping("/insertlenses")
 	public ResponseEntity<String> addLenses(@RequestBody Lenses lenses){
 		service.addLenses(lenses);
-		return new ResponseEntity<String>("Frames Added",HttpStatus.OK);
+		return new ResponseEntity<String>("Lenses Added",HttpStatus.OK);
 	}
 	@GetMapping
 	public ResponseEntity<List<Lenses>> getAllLenses(){
@@ -36,7 +37,7 @@ public class LensesController {
 	}
 	
 	@DeleteMapping("/deletelenses")
-	public ResponseEntity<String> deleteLenses(@RequestBody int lens_id){
+	public ResponseEntity<String> deleteLenses(@RequestBody int lens_id) throws LensesNotFoundException{
 		String str=service.deleteLenses(lens_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

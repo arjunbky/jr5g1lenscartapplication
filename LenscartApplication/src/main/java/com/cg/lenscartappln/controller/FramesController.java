@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.service.FramesService;
+import com.cg.lenscartappln.utils.FrameNotFoundException;
 
 
 @RestController
@@ -36,7 +37,7 @@ public class FramesController {
 		}
 		
 		@DeleteMapping("/deleteframes")
-		public ResponseEntity<String> deleteFrames(@RequestBody int frame_id){
+		public ResponseEntity<String> deleteFrames(@RequestBody int frame_id) throws FrameNotFoundException{
 			String str=service.deleteFrames(frame_id);
 			return new ResponseEntity<String>(str,HttpStatus.OK);
 		}

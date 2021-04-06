@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.cg.lenscartappln.dao.IAddressDao;
 import com.cg.lenscartappln.dao.ICustomerDao;
 import com.cg.lenscartappln.entity.Customer;
+import com.cg.lenscartappln.utils.CustomerNotFoundException;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -21,12 +22,13 @@ public class CustomerService implements ICustomerService {
 		List<Customer> custList=customerDao.findAll();
 		return custList;
 	}
-	public String deleteCustomer(int customer_id) {
+	public String deleteCustomer(int customer_id) throws CustomerNotFoundException {
 		if(customerDao.existsById(customer_id)) {
 			customerDao.deleteById(customer_id);
 			return "Customer Deleted";
 		}
-		return "Customer not found";
+		else
+		throw new CustomerNotFoundException();
 	}
 	public String modifyCustomer(int customer_id,Customer cust) {
 		if(customerDao.existsById(customer_id)) {

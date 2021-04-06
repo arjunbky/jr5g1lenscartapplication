@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.IOrdersDao;
 import com.cg.lenscartappln.dao.IPaymentDao;
-import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.entity.Payment;
+import com.cg.lenscartappln.utils.PaymentNotFoundException;
 
 @Service
 public class PaymentService implements IPaymentService {
@@ -23,12 +23,13 @@ public class PaymentService implements IPaymentService {
 		List<Payment> paymentList=paymentDao.findAll();
 		return paymentList;
 	}
-	public String cancelAllPayment(int  payment_id) {
+	public String cancelAllPayment(int  payment_id) throws PaymentNotFoundException {
 		if(paymentDao.existsById(payment_id)) {
 			paymentDao.deleteById(payment_id);
 			return "payment cancelled";
 			}
-		return "no payment with this id found";
+		else 
+			throw new PaymentNotFoundException();
 	}
 	
 	

@@ -74,6 +74,11 @@ public Lenses getLenses() {
 public void setLenses(Lenses lenses) {
 	this.lenses = lenses;
 }
+@Override
+public String toString() {
+	return "Cart [cart_id=" + cart_id + ", quantity=" + quantity + ", price=" + price + ", frames=" + frames
+			+ ", lenses=" + lenses + "]";
+}
 
 
 }

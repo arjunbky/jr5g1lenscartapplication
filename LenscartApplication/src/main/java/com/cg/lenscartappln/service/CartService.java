@@ -15,30 +15,29 @@ import com.cg.lenscartappln.dto.CartDto;
 import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.entity.Lenses;
+import com.cg.lenscartappln.utils.CartNotFoundException;
 
 
 
 @Service
 public class CartService implements ICartService {
 	@Autowired
-
 	ICartDao cartDao;
-
-	ICartDao dao;
+	
 	@Autowired
 	IFramesDao framesdao;
+	
 	@Autowired 
 	ILensesDao lensesdao;
 
-	
-
-
-	public String deleteCart(int cart_id) {
+	public String deleteCart(int cart_id) throws CartNotFoundException {
 		if(cartDao.existsById(cart_id)) {
 			cartDao.deleteById(cart_id);
 			return "cart deleted";
 		}
-		return "cart not found";
+		
+		else 
+			throw new CartNotFoundException();
 	}
 //	public void addCart(Cart cart) {
 //		// TODO Auto-generated method stub
@@ -54,10 +53,10 @@ public class CartService implements ICartService {
 		cart.setFrames(frame);
 		Lenses lens=lensesdao.getLensById(cartdto.getLens_id());
 		cart.setLenses(lens);
-		//cartDao.save(cart);
-		
-		
-		
+		System.out.println(cart);
+		cartDao.save(cart);
+		System.out.println(cart);
+	
 	}
 	
 	public List<Cart> getAllCarts(){

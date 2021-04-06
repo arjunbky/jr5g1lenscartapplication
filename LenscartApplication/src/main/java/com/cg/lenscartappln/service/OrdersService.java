@@ -9,6 +9,7 @@ import com.cg.lenscartappln.dao.ICartDao;
 import com.cg.lenscartappln.dao.ICustomerDao;
 import com.cg.lenscartappln.dao.IOrdersDao;
 import com.cg.lenscartappln.entity.Orders;
+import com.cg.lenscartappln.utils.OrdersNotFoundException;
 
 @Service
 public class OrdersService implements IOrdersService {
@@ -42,9 +43,13 @@ public class OrdersService implements IOrdersService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public String deleteOrder(int order_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public String deleteOrder(int order_id) throws OrdersNotFoundException {
+		if(ordersDao.existsById(order_id)) {
+			ordersDao.deleteById(order_id);
+			return "order deleted";
+		}
+		else
+			throw new OrdersNotFoundException();
 	}
 	
 	

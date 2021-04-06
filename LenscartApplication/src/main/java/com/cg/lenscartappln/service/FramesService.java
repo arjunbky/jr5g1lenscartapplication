@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.IFramesDao;
 import com.cg.lenscartappln.entity.Frames;
+import com.cg.lenscartappln.utils.FrameNotFoundException;
 
 @Service
 public class FramesService implements IFramesService {
 	@Autowired
 	IFramesDao framesDao;
+	
 	public void addFrames(Frames frames) {
 	framesDao.save(frames);
 	}
@@ -32,12 +34,13 @@ public class FramesService implements IFramesService {
 		return framesList;
 	}
 	
-	public String deleteFrames(int frame_id) {
+	public String deleteFrames(int frame_id) throws FrameNotFoundException {
 		if(framesDao.existsById(frame_id)) {
 			framesDao.deleteById(frame_id);
 			return "Frame deleted";
 		}
-		return "Frame not found";
+		else 
+			throw new FrameNotFoundException();
 	}
 	public String modifyFrames(int frame_id,Frames frames) {
 		if(framesDao.existsById(frame_id)) {
