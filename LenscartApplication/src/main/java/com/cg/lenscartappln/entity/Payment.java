@@ -37,6 +37,7 @@ public class Payment implements Serializable {
 		public Payment() {
 			
 		}
+		
 		public Payment(int payment_id, String card_name, int cvv, Date expiry_date, long card_number,Orders orders,boolean payment_status) {
 			super();
 			this.payment_id = payment_id;
@@ -46,7 +47,7 @@ public class Payment implements Serializable {
 			this.card_number = card_number;
 			this.orders=orders;
 			this.payment_status= payment_status;
-		}
+		}		
 		public int getPayment_id() {
 			return payment_id;
 		}
