@@ -36,6 +36,14 @@ public class Frames  implements Serializable {
 		return frame_id;
 	}
 
+	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price) {
+		this.frame_id = frame_id;
+		this.frame_shape = frame_shape;
+		this.frame_colour = frame_colour;
+		this.frame_brand = frame_brand;
+		this.frame_price = frame_price;
+	}
+
 	public void setFrame_id(int frame_id) {
 		this.frame_id = frame_id;
 	}
