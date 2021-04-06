@@ -1,6 +1,5 @@
 package com.cg.lenscartappln.dto;
 
-import com.cg.lenscartappln.entity.Address;
 
 public class CustomerDto {
 	private int customer_id;

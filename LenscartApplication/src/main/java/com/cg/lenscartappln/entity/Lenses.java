@@ -14,6 +14,13 @@ public class Lenses {
 	public Lenses() {
 	// TODO Auto-generated constructor stub
 }
+	public Lenses(int lens_id, float lens_power, String lens_brand, String lens_type, double lens_price) {
+		this.lens_id = lens_id;
+		this.lens_power = lens_power;
+		this.lens_brand = lens_brand;
+		this.lens_type = lens_type;
+		this.lens_price = lens_price;
+	}
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

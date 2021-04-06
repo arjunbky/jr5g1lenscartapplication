@@ -1,7 +1,7 @@
 package com.cg.lenscartappln.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+
 
 //import com.cg.lenscartappln.dto.FramesDto;
 //import com.cg.lenscartappln.dto.LensesDto;
