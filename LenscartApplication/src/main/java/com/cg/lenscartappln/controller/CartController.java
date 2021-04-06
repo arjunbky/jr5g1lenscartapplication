@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.lenscartappln.dto.CartDto;
 import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.service.CartService;
 
@@ -23,8 +24,9 @@ public class CartController {
 	@Autowired
 	CartService service;
 	@PostMapping("/insertcart")
-	public ResponseEntity<String> addCart(@RequestBody Cart cart){
-		service.addCart(cart);
+	public ResponseEntity<String> addCart(@RequestBody CartDto cart){
+		System.out.println(cart);
+//		service.addCart(cart);
 		return new ResponseEntity<String>("Cart Added",HttpStatus.OK);
 	}
 	@GetMapping

@@ -33,14 +33,7 @@ private Frames frames;
 private Lenses lenses;
 
 
-public Cart(int cart_id, int quantity, float price, Frames frames, Lenses lenses) {
-	super();
-	this.cart_id = cart_id;
-	this.quantity = quantity;
-	this.price = price;
-	this.frames = frames;
-	this.lenses = lenses;
-}
+
 
 //public Cart(CartDto cartDto,int cart_id, int quantity, double price, Frames frames, Lenses lenses) {
 //	this.cart_id = cart_id;
@@ -65,8 +58,8 @@ public void setQuantity(int number_of_products) {
 public double getPrice() {
 	return price;
 }
-public void setPrice(float price) {
-	this.price = price;
+public void setPrice(double d) {
+	this.price = d;
 }
 
 public Frames getFrames() {
@@ -81,8 +74,6 @@ public Lenses getLenses() {
 public void setLenses(Lenses lenses) {
 	this.lenses = lenses;
 }
-public Cart () {
-		
-	}
+
 
 }

@@ -76,6 +76,12 @@ public class Frames  implements Serializable {
 		return serialVersionUID;
 	}
 
+	@Override
+	public String toString() {
+		return "Frames [frame_id=" + frame_id + ", frame_shape=" + frame_shape + ", frame_colour=" + frame_colour
+				+ ", frame_brand=" + frame_brand + ", frame_price=" + frame_price + "]";
+	}
+
 	
 
 	
