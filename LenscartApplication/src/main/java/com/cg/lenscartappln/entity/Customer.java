@@ -37,7 +37,7 @@ public class Customer implements Serializable {
 	private String password;
 	//one to one mapping for customer and address
 	//only unidirectional
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,targetEntity = Address.class)
     @JoinColumn(name = "House_number")
     private Address address;
 

@@ -31,9 +31,9 @@ public class TestAddressManager {
 	@Test
 	public void testgetAllAddress() {
 		List<Address> addressList=new ArrayList<Address>();
-		addressList.add(new Address("A11","MG Raod","Hyderbad","Andra Pradesh",540012));
-		addressList.add(new Address("B12","Jaynagar","Banglore","Karnataka",560045));
-		addressList.add(new Address("Z31","Kottara","Mangalore","Karnataka",560037));
+		addressList.add(new Address("A12","MG Raod","Hyderbad","Andra Pradesh",540012));
+		addressList.add(new Address("B63","Jaynagar","Banglore","Karnataka",560045));
+		addressList.add(new Address("C23","Kottara","Mangalore","Karnataka",560037));
 		
 		Mockito.when(addressDao.findAll()).thenReturn(addressList);
 		List<Address> list = addressService.getAllAddress();
@@ -43,7 +43,7 @@ public class TestAddressManager {
 	@Test
 	public void testAddAddress() {
 		Address address=new Address();
-		address.setHouse_number("A11");
+		address.setHouse_number("Q32");
 		address.setStreet_name("Jaynagar");
 		address.setCity("Banglore");
 		address.setState("karnataka");

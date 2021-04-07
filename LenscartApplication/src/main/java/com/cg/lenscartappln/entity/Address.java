@@ -19,7 +19,8 @@ public class Address  implements Serializable    {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int House_number;
+@Column(name ="House_number")
+private String House_number;
 @Column (name=" Street_name",length=20)
 private String Street_name;
 @Column (name="City ",length=20)
@@ -29,10 +30,10 @@ private String State;
 @Column(name="Pincode",length=6)
 private int Pincode;
 
-public int getHouse_number() {
+public String getHouse_number() {
 	return House_number;
 }
-public void setHouse_number(int house_number) {
+public void setHouse_number(String house_number) {
 	House_number = house_number;
 }
 public String getStreet_name() {
@@ -62,7 +63,7 @@ public void setPincode(int pincode) {
 public Address () {
 		
 	}
-public  Address(int House_number, String Street_name, String City, String State, int Pincode)  {
+public  Address(String House_number, String Street_name, String City, String State, int Pincode)  {
  super();
 this. House_number=House_number;
 this. Street_name= Street_name;
