@@ -22,27 +22,40 @@ public class OrdersService implements IOrdersService {
 	@Autowired
 	ICustomerDao customerDao;
   
-	
+//	** method to add the order details to Orders table **
 	public void addOrders(Orders orders) {
 		ordersDao.save(orders);
 		
 	}
+//	** method to get all the details of Order**
 	public List<Orders> getAllOrders(){
 		List<Orders> orderslist=ordersDao.findAll();
 		return orderslist;
 	}
+//	**method to get orders by cart Id**
 	public Orders getOrdersByCartId(int cart_id) {
 		return ordersDao.getOrdersByCartId(cart_id);
 		
 	}
+//	**method to get customer details based on customer_id in the order table**
 	public List<Orders> getCustomerDetails(int customer_id) {
 		List<Orders> orderList=ordersDao.findAll();
 		return orderList;
 	}
-	public String modifyOrder(int order_id, Orders order) {
-		// TODO Auto-generated method stub
+//	**method to update the existing order in the table**
+	public String modifyOrder(int order_id, Orders orders) {
+		if(ordersDao.existsById(order_id)) {
+			Orders order=ordersDao.findById(order_id).get();
+			order.setDate_of_order(orders.getDate_of_order());
+			order.setCustomer(orders.getCustomer());
+			order.setExpected_date_of_arrival(orders.getExpected_date_of_arrival());
+			
+			
+		
+		}
 		return null;
 	}
+//	*method to delete the order based on order_id**
 	public String deleteOrder(int order_id) throws OrdersNotFoundException {
 		if(ordersDao.existsById(order_id)) {
 			ordersDao.deleteById(order_id);

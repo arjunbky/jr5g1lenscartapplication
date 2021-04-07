@@ -42,7 +42,7 @@ public class LensesController {
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatelenses/{code}")
-	public ResponseEntity<String> modifyLenses(@PathVariable int lens_id,@RequestBody Lenses lens ){
+	public ResponseEntity<String> modifyLenses(@PathVariable int lens_id,@RequestBody Lenses lens ) throws LensesNotFoundException{
 		String str=service.modifyLenses(lens_id, lens);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

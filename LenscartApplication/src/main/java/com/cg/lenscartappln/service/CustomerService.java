@@ -15,13 +15,16 @@ public class CustomerService implements ICustomerService {
 	ICustomerDao customerDao;
 	@Autowired
 	IAddressDao addressDao;
+//** method to add customer details to the customer table**
 	public void addCustomer(Customer customer) {
 		customerDao.save(customer);  
 	}
+//** method to get all the customer details **
 	public List<Customer> getAllCustomer(){
 		List<Customer> custList=customerDao.findAll();
 		return custList;
 	}
+//** method to delete the customer based on customer_id**
 	public String deleteCustomer(int customer_id) throws CustomerNotFoundException {
 		if(customerDao.existsById(customer_id)) {
 			customerDao.deleteById(customer_id);
@@ -30,7 +33,8 @@ public class CustomerService implements ICustomerService {
 		else
 		throw new CustomerNotFoundException();
 	}
-	public String modifyCustomer(int customer_id,Customer cust) {
+//**method to update the existing customer details in the table**
+	public String modifyCustomer(int customer_id,Customer cust) throws CustomerNotFoundException {
 		if(customerDao.existsById(customer_id)) {
 			Customer customer=customerDao.findById(customer_id).get();
 			customer.setFirst_name(cust.getFirst_name());
@@ -42,7 +46,8 @@ public class CustomerService implements ICustomerService {
 			customerDao.save(customer);
 			return "Customer Updated";
 		}
-		return "Customer not found";
+		else
+			throw new CustomerNotFoundException();
 	}
 
 }

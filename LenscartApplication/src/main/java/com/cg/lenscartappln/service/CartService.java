@@ -29,7 +29,7 @@ public class CartService implements ICartService {
 	
 	@Autowired 
 	ILensesDao lensesdao;
-
+//** method to delete the items present in  the cart**
 	public String deleteCart(int cart_id) throws CartNotFoundException {
 		if(cartDao.existsById(cart_id)) {
 			cartDao.deleteById(cart_id);
@@ -39,13 +39,12 @@ public class CartService implements ICartService {
 		else 
 			throw new CartNotFoundException();
 	}
-//	public void addCart(Cart cart) {
-//		// TODO Auto-generated method stub
-//		cartDao.save(cart);
-//	}
+
+	
+//**method to add the frames and lenses by their ID to the cart**
 	public void addCart(CartDto cartdto) {
 		Cart cart=new Cart();
-//		cart.setCart_id(cartdto.getCart_id());
+
 		cart.setQuantity(cartdto.getQuantity());
 		cart.setPrice(cartdto.getPrice());
 		Frames frame=framesdao.getFrameById(cartdto.getFrame_id());
@@ -58,7 +57,7 @@ public class CartService implements ICartService {
 		System.out.println(cart);
 	
 	}
-	
+//**method to get all the items present in the cart**
 	public List<Cart> getAllCarts(){
 		List<Cart> cartList=cartDao.findAll();
 		return cartList;

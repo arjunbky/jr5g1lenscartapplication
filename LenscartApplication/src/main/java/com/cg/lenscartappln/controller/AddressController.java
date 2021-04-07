@@ -39,7 +39,7 @@ public class AddressController {
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updateaddress/{code}")
-	public ResponseEntity<String> modifyAddress(@PathVariable int house_number,@RequestBody Address address){
+	public ResponseEntity<String> modifyAddress(@PathVariable int house_number,@RequestBody Address address) throws AddressNotFoundException{
 		String str=addressService.modifyAddress(house_number, address);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

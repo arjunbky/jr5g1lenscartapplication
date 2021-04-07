@@ -15,7 +15,7 @@ import com.cg.lenscartappln.utils.LensesNotFoundException;
 public class LensesServices implements ILensesService{
 	@Autowired
 	ILensesDao dao;
-
+//**method to add the lenses details to the lenses table**
 	@Override
 	public void addLenses(Lenses lenses) {
 		Lenses lens=new Lenses();
@@ -26,13 +26,13 @@ public class LensesServices implements ILensesService{
 		lens.setLens_price( lenses.getLens_price());
 		dao.save(lens);
 	}
-
+//**method to get the details of all the lenses in the table**
 	@Override
 	public List<Lenses> getAllLenses() {
 		List<Lenses> lensList=dao.findAll();
 		return lensList;
 	}
-
+//** method to delete lenses based on their ID**
 	@Override
 	public String deleteLenses(int lens_id) throws LensesNotFoundException {
 		if(dao.existsById(lens_id)) {
@@ -42,9 +42,9 @@ public class LensesServices implements ILensesService{
 		else 
 			throw new LensesNotFoundException();
 	}
-
+//** method to update the lenses based on their ID**
 	@Override
-	public String modifyLenses(int lens_id, Lenses lens) {
+	public String modifyLenses(int lens_id, Lenses lens) throws LensesNotFoundException {
 		if(dao.existsById(lens_id)) {
 			Lenses lenses =dao.findById(lens_id).get();
 			lenses.setLens_power(lens.getLens_power());
@@ -53,7 +53,9 @@ public class LensesServices implements ILensesService{
 			dao.save(lens);
 			return "Lenses updated";
 		}
-		return "Lens not found";
+		else 
+			throw new LensesNotFoundException();
+		
 	}
 }
 	

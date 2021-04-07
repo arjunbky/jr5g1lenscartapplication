@@ -42,7 +42,7 @@ public class CustomerController {
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatecust/{code}")
-	public ResponseEntity<String> modifyCustomer(@PathVariable int customer_id,@RequestBody Customer cust){
+	public ResponseEntity<String> modifyCustomer(@PathVariable int customer_id,@RequestBody Customer cust) throws CustomerNotFoundException{
 		String str=service.modifyCustomer(customer_id, cust);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
