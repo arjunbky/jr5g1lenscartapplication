@@ -31,6 +31,9 @@ public class Exceptionhandler {
 	public ResponseEntity<Object> exception(AddressNotFoundException exception){
 		return new ResponseEntity<Object>("Address not found...",HttpStatus.NOT_FOUND);
 	}
-	
+	@ExceptionHandler(value = CartNotFoundException.class)
+	public ResponseEntity<Object> exception(CartNotFoundException exception){
+		return new ResponseEntity<Object>("Cart not found...",HttpStatus.NOT_FOUND);
+	}
 
 }

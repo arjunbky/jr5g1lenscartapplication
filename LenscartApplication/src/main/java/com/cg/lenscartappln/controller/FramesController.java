@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.entity.Frames;
@@ -26,8 +27,14 @@ public class FramesController {
 		FramesService service;
 		
 		@PostMapping("/insertframes")
-		public ResponseEntity<String> addFrames(@RequestBody Frames frames){
-			service.addFrames(frames);
+		public ResponseEntity<String> addFrames(@RequestParam("frame_shape") String frame_shape,@RequestParam("frame_colour") String frame_colour,
+				@RequestParam("frame_brand") String frame_brand,@RequestParam("frame_price") double frame_price){
+			Frames frame=new Frames();
+			frame.setFrame_shape(frame_shape);
+			frame.setFrame_colour(frame_colour);
+			frame.setFrame_brand(frame_brand);
+			frame.setFrame_price(frame_price);
+			service.addFrames(frame);
 			return new ResponseEntity<String>("Frames Added",HttpStatus.OK);
 		}
 		@GetMapping
@@ -37,9 +44,9 @@ public class FramesController {
 		}
 		
 		@DeleteMapping("/deleteframes")
-		public ResponseEntity<String> deleteFrames(@RequestBody int frame_id) throws FrameNotFoundException{
-			String str=service.deleteFrames(frame_id);
-			return new ResponseEntity<String>(str,HttpStatus.OK);
+		public ResponseEntity<String> deleteFrames(@RequestParam int frame_id) throws FrameNotFoundException{
+			service.deleteFrames(frame_id);
+			return new ResponseEntity<String>("frame deleted",HttpStatus.OK);
 		}
 		@PutMapping("/updateframes/{code}")
 		public ResponseEntity<String> modifyFrames(@PathVariable int frame_id,@RequestBody Frames frames){

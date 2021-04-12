@@ -18,7 +18,6 @@ public class Address  implements Serializable    {
 	private static final long serialVersionUID = 1L;
 
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name ="House_number")
 private String House_number;
 @Column (name=" Street_name",length=20)

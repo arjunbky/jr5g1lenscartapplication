@@ -43,17 +43,19 @@ public class OrdersService implements IOrdersService {
 		return orderList;
 	}
 //	**method to update the existing order in the table**
-	public String modifyOrder(int order_id, Orders orders) {
+	public String modifyOrder(int order_id, Orders orders) throws OrdersNotFoundException {
 		if(ordersDao.existsById(order_id)) {
 			Orders order=ordersDao.findById(order_id).get();
 			order.setDate_of_order(orders.getDate_of_order());
 			order.setCustomer(orders.getCustomer());
 			order.setExpected_date_of_arrival(orders.getExpected_date_of_arrival());
-			
-			
-		
-		}
-		return null;
+			order.setCart(orders.getCart());
+			order.setTotal_cost(orders.getTotal_cost());
+			ordersDao.save(orders);
+		return "order updated";
+	}
+		else 
+			throw new OrdersNotFoundException();
 	}
 //	*method to delete the order based on order_id**
 	public String deleteOrder(int order_id) throws OrdersNotFoundException {

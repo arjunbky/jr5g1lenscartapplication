@@ -27,12 +27,15 @@ public class FramesService implements IFramesService {
 	}
 //**method to delete the frame details based on frame_id**
 	public String deleteFrames(int frame_id) throws FrameNotFoundException {
-		if(framesDao.existsById(frame_id)) {
+		List<Frames> frameList=framesDao.findAll();
+		for (Frames frame:frameList) {
+		if(frame.getFrame_id()==frame_id) {
 			framesDao.deleteById(frame_id);
 			return "Frame deleted";
 		}
-		else 
+		}
 			throw new FrameNotFoundException();
+	
 	}
 //** method to update the existing frame based on frame_id**
 	public String modifyFrames(int frame_id,Frames frames) {

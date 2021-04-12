@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.dto.CartDto;
@@ -35,9 +36,9 @@ public class CartController {
 	}
 	
 	@DeleteMapping("/deletecart")
-	public ResponseEntity<String> deleteCart(@RequestBody int cart_id) throws CartNotFoundException{
-		String str=service.deleteCart(cart_id);
-		return new ResponseEntity<String>(str,HttpStatus.OK);
+	public ResponseEntity<String> deleteCart(@RequestParam int cart_id) throws CartNotFoundException{
+		service.deleteCart(cart_id);
+		return new ResponseEntity<String>("Cart deleted",HttpStatus.OK);
 	}
 //	@PutMapping("/updatecart/{code}")
 //	public ResponseEntity<String> modifyCart(@PathVariable int cart_id,@RequestBody Cart cart){

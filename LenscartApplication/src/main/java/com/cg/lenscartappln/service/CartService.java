@@ -31,13 +31,15 @@ public class CartService implements ICartService {
 	ILensesDao lensesdao;
 //** method to delete the items present in  the cart**
 	public String deleteCart(int cart_id) throws CartNotFoundException {
-		if(cartDao.existsById(cart_id)) {
+		
+		 List<Cart> cartList=cartDao.findAll();
+		for(Cart carts:cartList) {
+		if(carts.getCart_id()==cart_id) {
 			cartDao.deleteById(cart_id);
 			return "cart deleted";
 		}
-		
-		else 
-			throw new CartNotFoundException();
+		}
+		 	throw new CartNotFoundException();
 	}
 
 	
@@ -62,6 +64,12 @@ public class CartService implements ICartService {
 		List<Cart> cartList=cartDao.findAll();
 		return cartList;
 	}
+
+
+//	public String deleteByCartId(int cart_id) {
+//		
+//		return cartDao.deleteByCartId(cart_id);
+//	}
 
 }
 	

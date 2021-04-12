@@ -42,7 +42,7 @@ public class OrdersController {
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updateorder/{code}")
-	public ResponseEntity<String> modifyOrder(@PathVariable int order_id,@RequestBody Orders order){
+	public ResponseEntity<String> modifyOrder(@PathVariable int order_id,@RequestBody Orders order) throws OrdersNotFoundException{
 		String str=service.modifyOrder(order_id, order);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

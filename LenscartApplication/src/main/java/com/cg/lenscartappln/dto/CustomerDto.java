@@ -8,10 +8,10 @@ public class CustomerDto {
 	private long phone_number;
 	private String email_id;
 	private String password;
-	private int House_number ; 
+	private String House_number ; 
 	
 	public CustomerDto(int customer_id, String first_name, String last_name, long phone_number, String email_id,
-			String password, int house_number) {
+			String password, String house_number) {
 		this.customer_id = customer_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
@@ -56,10 +56,10 @@ public class CustomerDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getHouse_number() {
+	public String getHouse_number() {
 		return House_number;
 	}
-	public void setHouse_number(int house_number) {
+	public void setHouse_number(String house_number) {
 		House_number = house_number;
 	}
 }

@@ -16,13 +16,16 @@ public class PaymentService implements IPaymentService {
 	IPaymentDao paymentDao;
 	@Autowired
 	IOrdersDao ordersDao;
+//** method to add payment details**
 	public void addPayment(Payment payment) {
 		paymentDao.save(payment);  
 	}
+//** method to get all Payment details**
 	public List<Payment> getAllPayment() {
 		List<Payment> paymentList=paymentDao.findAll();
 		return paymentList;
 	}
+//** method to delete payment based on ID**
 	public String cancelAllPayment(int  payment_id) throws PaymentNotFoundException {
 		if(paymentDao.existsById(payment_id)) {
 			paymentDao.deleteById(payment_id);
