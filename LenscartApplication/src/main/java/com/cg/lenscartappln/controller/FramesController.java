@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.entity.Frames;
+import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.service.FramesService;
 import com.cg.lenscartappln.utils.FrameNotFoundException;
 
@@ -26,16 +27,20 @@ public class FramesController {
 	@Autowired
 		FramesService service;
 		
-		@PostMapping("/insertframes")
-		public ResponseEntity<String> addFrames(@RequestParam("frame_shape") String frame_shape,@RequestParam("frame_colour") String frame_colour,
-				@RequestParam("frame_brand") String frame_brand,@RequestParam("frame_price") double frame_price){
-			Frames frame=new Frames();
-			frame.setFrame_shape(frame_shape);
-			frame.setFrame_colour(frame_colour);
-			frame.setFrame_brand(frame_brand);
-			frame.setFrame_price(frame_price);
-			service.addFrames(frame);
-			return new ResponseEntity<String>("Frames Added",HttpStatus.OK);
+//		@PostMapping("/insertframes")
+//		public ResponseEntity<String> addFrames(@RequestParam("frame_shape") String frame_shape,@RequestParam("frame_colour") String frame_colour,
+//				@RequestParam("frame_brand") String frame_brand,@RequestParam("frame_price") double frame_price)
+	@PostMapping("/insertframes")	
+	public ResponseEntity<String> addLenses(@RequestBody Frames frames){
+//			Frames frame=new Frames();
+//			frame.setFrame_shape(frame_shape);
+//			frame.setFrame_colour(frame_colour);
+//			frame.setFrame_brand(frame_brand);
+//			frame.setFrame_price(frame_price);
+//			service.addFrames(frame);
+//			return new ResponseEntity<String>("Frames Added",HttpStatus.OK);
+		service.addFrames(frames);
+		return new ResponseEntity<String>("frames Added",HttpStatus.OK);
 		}
 		@GetMapping
 		public ResponseEntity<List<Frames>> getAllFrames(){

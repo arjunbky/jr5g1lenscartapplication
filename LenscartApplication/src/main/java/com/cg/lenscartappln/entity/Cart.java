@@ -24,11 +24,11 @@ private int quantity;
 @Column
 private double price;
 
-@OneToOne(cascade = CascadeType.ALL)
+@OneToOne
 @JoinColumn(name = "frame_id")
 private Frames frames;
 
-@OneToOne(cascade = CascadeType.ALL)
+@OneToOne
 @JoinColumn(name = "lens_id")
 private Lenses lenses;
 
