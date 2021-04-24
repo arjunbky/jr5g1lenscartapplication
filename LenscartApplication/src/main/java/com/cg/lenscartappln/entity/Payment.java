@@ -29,9 +29,10 @@ public class Payment implements Serializable {
 		@Column(name="card_number",length=16)
 		private long card_number;
 		
-		@OneToOne(cascade = CascadeType.ALL)
+		@OneToOne
 		@JoinColumn(name = "order_id")
 		private Orders orders;
+		
 		@Column(name="payment_status")
 		private boolean payment_status;
 		public Payment() {

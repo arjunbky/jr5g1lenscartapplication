@@ -3,19 +3,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.cg.lenscartappln.dao.IAddressDao;
 import com.cg.lenscartappln.dao.ICustomerDao;
 import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.utils.CustomerNotFoundException;
+
 
 @Service
 public class CustomerService implements ICustomerService {
 	@Autowired
 	ICustomerDao customerDao;
-	@Autowired
-	IAddressDao addressDao;
-//** method to add customer details to the customer table**
+	
+	public Customer validate(String email_id,String password) {
+		Customer customer =customerDao.validate(email_id,password);
+		return customer;
+	}
+	
+	//** method to add customer details to the customer table**
 	public void addCustomer(Customer customer) {
 		customerDao.save(customer);  
 	}
@@ -42,7 +45,11 @@ public class CustomerService implements ICustomerService {
 			customer.setPhone_number(cust.getPhone_number());
 			customer.setEmail_id(cust.getEmail_id());
 			customer.setPassword(cust.getPassword());
-			addressDao.save(cust.getAddress());
+			customer.setHouse_number(cust.getHouse_number());
+			customer.setCity(cust.getCity());
+			customer.setState(cust.getState());
+			customer.setPincode(cust.getPincode());
+			
 			customerDao.save(customer);
 			return "Customer Updated";
 		}

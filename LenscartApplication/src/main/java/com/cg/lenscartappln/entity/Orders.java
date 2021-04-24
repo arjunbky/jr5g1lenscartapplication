@@ -77,12 +77,12 @@ public class Orders implements Serializable{
 	@Column(name="expected_date_of_arrival")
 	private Date expected_date_of_arrival;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "cart_id")
 	private Cart cart;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 	

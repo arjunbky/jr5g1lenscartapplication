@@ -11,4 +11,5 @@ public interface ICustomerService {
 	public List<Customer> getAllCustomer()throws CustomerNotFoundException;
 	public String deleteCustomer(int customer_id)throws CustomerNotFoundException;
 	public String modifyCustomer(int customer_id, Customer cust)throws CustomerNotFoundException;
+	public Customer validate(String email_id,String password);
 }
