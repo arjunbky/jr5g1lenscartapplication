@@ -15,6 +15,10 @@ public class CustomerService implements ICustomerService {
 	
 	public Customer validate(String email_id,String password) {
 		Customer customer =customerDao.validate(email_id,password);
+		if(customer ==null) {
+			customer=new Customer();
+			customer.setMessage("Invalid email");
+		}
 		return customer;
 	}
 	

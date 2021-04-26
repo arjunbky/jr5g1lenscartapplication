@@ -6,10 +6,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="Frames")
 public class Frames  implements Serializable {
+public Frames() {
+	// TODO Auto-generated constructor stub
+}
+	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
+			Cart cart) {
+		this.frame_id = frame_id;
+		this.frame_shape = frame_shape;
+		this.frame_colour = frame_colour;
+		this.frame_brand = frame_brand;
+		this.frame_price = frame_price;
+		this.cart = cart;
+	}
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -28,20 +42,22 @@ public class Frames  implements Serializable {
 	@Column(name="frame_price")
 	private double frame_price;
 	
-	public Frames() {
-		// TODO Auto-generated constructor stub
+	@ManyToOne
+	@JoinColumn(name="cart_id")
+	private Cart cart;
+	
+	public Cart getCart() {
+		return cart;
 	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+	
 
 	public int getFrame_id() {
 		return frame_id;
-	}
-
-	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price) {
-		this.frame_id = frame_id;
-		this.frame_shape = frame_shape;
-		this.frame_colour = frame_colour;
-		this.frame_brand = frame_brand;
-		this.frame_price = frame_price;
 	}
 
 	public void setFrame_id(int frame_id) {

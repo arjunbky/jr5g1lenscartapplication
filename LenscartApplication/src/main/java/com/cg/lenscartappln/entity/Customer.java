@@ -56,6 +56,27 @@ public class Customer implements Serializable {
 	@Column(name="Pincode",length=6)
 	private int pincode;
 
+	private String message;
+	 
+	private String role;
+
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 
 	public int getCustomer_id() {
 		return customer_id;

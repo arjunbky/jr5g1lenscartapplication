@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +21,7 @@ import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.service.FramesService;
 import com.cg.lenscartappln.utils.FrameNotFoundException;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/frames")
 public class FramesController {
@@ -30,7 +31,7 @@ public class FramesController {
 //		@PostMapping("/insertframes")
 //		public ResponseEntity<String> addFrames(@RequestParam("frame_shape") String frame_shape,@RequestParam("frame_colour") String frame_colour,
 //				@RequestParam("frame_brand") String frame_brand,@RequestParam("frame_price") double frame_price)
-	@PostMapping("/insertframes")	
+	@PostMapping	
 	public ResponseEntity<String> addLenses(@RequestBody Frames frames){
 //			Frames frame=new Frames();
 //			frame.setFrame_shape(frame_shape);

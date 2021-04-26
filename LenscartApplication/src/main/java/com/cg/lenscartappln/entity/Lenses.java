@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -14,13 +16,16 @@ public class Lenses {
 	public Lenses() {
 	// TODO Auto-generated constructor stub
 }
-	public Lenses(int lens_id, float lens_power, String lens_brand, String lens_type, double lens_price) {
+	
+	public Lenses(int lens_id, float lens_power, String lens_brand, String lens_type, double lens_price, Cart cart) {
 		this.lens_id = lens_id;
 		this.lens_power = lens_power;
 		this.lens_brand = lens_brand;
 		this.lens_type = lens_type;
 		this.lens_price = lens_price;
+		this.cart = cart;
 	}
+
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +42,17 @@ public class Lenses {
 	
 	@Column(name="lens_price")
 	private double lens_price;
+	
+	@ManyToOne
+	@JoinColumn(name="cart_id")
+	private Cart cart;
 
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 	public int getLens_id() {
 		return lens_id;
 	}

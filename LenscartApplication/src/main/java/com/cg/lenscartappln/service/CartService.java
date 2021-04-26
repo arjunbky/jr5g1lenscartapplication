@@ -1,6 +1,7 @@
 package com.cg.lenscartappln.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +47,17 @@ public class CartService implements ICartService {
 //**method to add the frames and lenses by their ID to the cart**
 	public void addCart(CartDto cartdto) {
 		Cart cart=new Cart();
-
 		cart.setQuantity(cartdto.getQuantity());
 		cart.setPrice(cartdto.getPrice());
+       List<Frames> frameList=new ArrayList<Frames>();
 		Frames frame=framesdao.getFrameById(cartdto.getFrame_id());
 		System.out.println(frame);
-		cart.setFrames(frame);
+		frameList.add(frame);
+		cart.setFrames(frameList);
+		List<Lenses> lenseList=new ArrayList<Lenses>();
 		Lenses lens=lensesdao.getLensById(cartdto.getLens_id());
-		cart.setLenses(lens);
+		lenseList.add(lens);
+		cart.setLenses(lenseList);
 		System.out.println(cart);
 		cartDao.save(cart);
 		System.out.println(cart);

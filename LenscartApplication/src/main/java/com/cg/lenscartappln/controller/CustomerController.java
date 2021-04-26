@@ -30,6 +30,7 @@ public class CustomerController {
 	@PostMapping("/validate")
 	public ResponseEntity<Customer> validate(@RequestBody Customer customer){
 		Customer log=customerService.validate(customer.getEmail_id(),customer.getPassword());
+		
 		return new ResponseEntity<Customer>(log,HttpStatus.OK);
 	}
 	

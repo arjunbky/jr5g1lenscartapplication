@@ -1,14 +1,14 @@
  package com.cg.lenscartappln.entity;
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,13 +25,11 @@ private int quantity;
 @Column
 private double price;
 
-@OneToOne
-@JoinColumn(name = "frame_id")
-private Frames frames;
+@OneToMany(mappedBy = "cart")
+private List<Frames> frames;
 
-@OneToOne
-@JoinColumn(name = "lens_id")
-private Lenses lenses;
+@OneToMany(mappedBy="cart")
+private List<Lenses> lenses;
 
 
 
@@ -59,20 +57,22 @@ public void setQuantity(int number_of_products) {
 public double getPrice() {
 	return price;
 }
-public void setPrice(double d) {
-	this.price = d;
+public void setPrice(double price) {
+	this.price = price;
 }
 
-public Frames getFrames() {
+
+public List<Frames> getFrames() {
 	return frames;
 }
-public void setFrames(Frames frames) {
+public void setFrames(List<Frames> frames) {
 	this.frames = frames;
 }
-public Lenses getLenses() {
+
+public List<Lenses> getLenses() {
 	return lenses;
 }
-public void setLenses(Lenses lenses) {
+public void setLenses(List<Lenses> lenses) {
 	this.lenses = lenses;
 }
 @Override
@@ -80,6 +80,7 @@ public String toString() {
 	return "Cart [cart_id=" + cart_id + ", quantity=" + quantity + ", price=" + price + ", frames=" + frames
 			+ ", lenses=" + lenses + "]";
 }
+
 
 
 }
