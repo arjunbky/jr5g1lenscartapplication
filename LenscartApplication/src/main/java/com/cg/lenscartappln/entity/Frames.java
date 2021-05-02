@@ -47,7 +47,7 @@ public Frames() {
 	@Column(name="frame_price")
 	private double frame_price;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="cart_id")
     @JsonBackReference
 	private Cart cart;

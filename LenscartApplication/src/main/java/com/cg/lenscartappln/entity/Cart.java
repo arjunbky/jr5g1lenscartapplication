@@ -30,11 +30,12 @@ private int quantity;
 @Column
 private double price;
 
-@OneToMany(mappedBy = "cart",targetEntity =Frames.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "cart")
 @JsonManagedReference
 private List<Frames> frames;
 
 @OneToMany(mappedBy="cart")
+@JsonManagedReference
 private List<Lenses> lenses;
 
 

@@ -11,12 +11,7 @@ public class FramesDto {
 	
 	
 	
-	public int getFrame_id() {
-		return frame_id;
-	}
-	public void setFrame_id(int frame_id) {
-		this.frame_id = frame_id;
-	}
+
 	public String getFrame_shape() {
 		return frame_shape;
 	}

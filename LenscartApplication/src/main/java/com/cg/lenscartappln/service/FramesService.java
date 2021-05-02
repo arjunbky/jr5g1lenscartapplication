@@ -46,7 +46,7 @@ public class FramesService implements IFramesService {
 	
 	}
 //** method to update the existing frame based on frame_id**
-	public String modifyFrames(int frame_id,Frames frames) {
+	public String modifyFrames(int frame_id,Frames frames) throws FrameNotFoundException {
 		if(framesDao.existsById(frame_id)) {
 			Frames frame=framesDao.findById(frame_id).get();
 			frame.setFrame_shape(frames.getFrame_shape());
@@ -55,7 +55,8 @@ public class FramesService implements IFramesService {
 			framesDao.save(frames);
 			return "Frame updated";
 		}
-		return "Frame not found";
+		else
+			throw new FrameNotFoundException();
 	}
 //**method to get the frame by ID**
 public Frames getFrameById(int frame_id) {

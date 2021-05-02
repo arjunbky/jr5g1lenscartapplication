@@ -8,9 +8,15 @@ public class LensesDto {
 	private String lens_brand;
 	private String lens_type;
 	private double lens_price;
-	private Cart cart;
+	private CartDto cart;
 	
 	
+	public CartDto getCart() {
+		return cart;
+	}
+	public void setCart(CartDto cart) {
+		this.cart = cart;
+	}
 	public int getLens_id() {
 		return lens_id;
 	}
@@ -41,11 +47,6 @@ public class LensesDto {
 	public void setLens_price(double lens_price) {
 		this.lens_price = lens_price;
 	}
-	public Cart getCart() {
-		return cart;
-	}
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
+
 	
 }

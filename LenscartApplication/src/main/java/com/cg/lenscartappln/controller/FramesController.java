@@ -28,10 +28,7 @@ import com.cg.lenscartappln.utils.FrameNotFoundException;
 public class FramesController {
 	@Autowired
 		FramesService service;
-		
-//		@PostMapping("/insertframes")
-//		public ResponseEntity<String> addFrames(@RequestParam("frame_shape") String frame_shape,@RequestParam("frame_colour") String frame_colour,
-//				@RequestParam("frame_brand") String frame_brand,@RequestParam("frame_price") double frame_price)
+	
 	@PostMapping	
 	public ResponseEntity<String> addLenses(@RequestBody FramesDto framesDto){
 //			Frames frame=new Frames();
@@ -56,7 +53,7 @@ public class FramesController {
 			return new ResponseEntity<String>("frame deleted",HttpStatus.OK);
 		}
 		@PutMapping("/updateframes/{code}")
-		public ResponseEntity<String> modifyFrames(@RequestParam int frame_id,@RequestBody Frames frames){
+		public ResponseEntity<String> modifyFrames(@RequestParam int frame_id,@RequestBody Frames frames) throws FrameNotFoundException{
 			String str=service.modifyFrames(frame_id, frames);
 			return new ResponseEntity<String>(str,HttpStatus.OK);
 		}

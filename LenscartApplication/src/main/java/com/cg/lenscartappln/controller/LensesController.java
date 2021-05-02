@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.lenscartappln.dto.LensesDto;
 //import com.cg.lenscart.dto.LensesDto;
 import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.service.LensesServices;
@@ -26,8 +27,8 @@ public class LensesController {
 	LensesServices service;
 	
 	@PostMapping("/insertlenses")
-	public ResponseEntity<String> addLenses(@RequestBody Lenses lenses){ //change to lensesdto
-		service.addLenses(lenses);
+	public ResponseEntity<String> addLenses(@RequestBody LensesDto lensesDto){ //change to lensesdto
+		service.addLenses(lensesDto);
 		return new ResponseEntity<String>("Lenses Added",HttpStatus.OK);
 	}
 	@GetMapping
