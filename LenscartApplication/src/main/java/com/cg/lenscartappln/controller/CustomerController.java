@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.lenscartappln.dto.CustomerDto;
 import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.service.CustomerService;
 import com.cg.lenscartappln.utils.CustomerNotFoundException;
@@ -35,8 +36,8 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<String> addCustomer(@RequestBody Customer customer){
-		customerService.addCustomer(customer);
+	public ResponseEntity<String> addCustomer(@RequestBody CustomerDto customerdto){
+		customerService.addCustomer(customerdto);
 		return new ResponseEntity<String>("Customer Added",HttpStatus.OK);
 	}
 	@GetMapping
@@ -51,7 +52,7 @@ public class CustomerController {
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatecust/{code}")
-	public ResponseEntity<String> modifyCustomer(@PathVariable int customer_id,@RequestBody Customer cust) throws CustomerNotFoundException{
+	public ResponseEntity<String> modifyCustomer(@PathVariable int customer_id,@RequestBody CustomerDto cust) throws CustomerNotFoundException{
 		String str=customerService.modifyCustomer(customer_id, cust);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

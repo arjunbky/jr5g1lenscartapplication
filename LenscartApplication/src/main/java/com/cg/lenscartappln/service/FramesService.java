@@ -7,16 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.IFramesDao;
+import com.cg.lenscartappln.dto.FramesDto;
 import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.utils.FrameNotFoundException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class FramesService implements IFramesService {
 	@Autowired
 	IFramesDao framesDao;
 //** method to add the frame details to the Frames table**
-	public void addFrames(Frames frames) {
-	framesDao.save(frames);
+	public void addFrames(FramesDto framesdto) {
+		ObjectMapper mapper=new ObjectMapper();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		Frames frameObj=new Frames();
+		frameObj=mapper.convertValue(framesdto, Frames.class);
+		
+		framesDao.save(frameObj);
 	}
 	
 		

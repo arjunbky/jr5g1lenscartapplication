@@ -1,29 +1,34 @@
 package com.cg.lenscartappln.entity;
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="Frames")
 public class Frames  implements Serializable {
 public Frames() {
 	// TODO Auto-generated constructor stub
 }
-	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
-			Cart cart) {
-		this.frame_id = frame_id;
-		this.frame_shape = frame_shape;
-		this.frame_colour = frame_colour;
-		this.frame_brand = frame_brand;
-		this.frame_price = frame_price;
-		this.cart = cart;
-	}
+//	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
+//			Cart cart) {
+//		this.frame_id = frame_id;
+//		this.frame_shape = frame_shape;
+//		this.frame_colour = frame_colour;
+//		this.frame_brand = frame_brand;
+//		this.frame_price = frame_price;
+//		this.cart = cart;
+//	}
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -42,8 +47,9 @@ public Frames() {
 	@Column(name="frame_price")
 	private double frame_price;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 	@JoinColumn(name="cart_id")
+    @JsonBackReference
 	private Cart cart;
 	
 	public Cart getCart() {

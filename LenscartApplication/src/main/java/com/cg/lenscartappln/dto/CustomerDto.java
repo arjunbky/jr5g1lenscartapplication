@@ -8,18 +8,13 @@ public class CustomerDto {
 	private long phone_number;
 	private String email_id;
 	private String password;
-	private String House_number ; 
+	private int address_id ; 
+	private String house_number;
+	private String street_name;
+	private String city;
+	private String state;
+	private int pincode;
 	
-	public CustomerDto(int customer_id, String first_name, String last_name, long phone_number, String email_id,
-			String password, String house_number) {
-		this.customer_id = customer_id;
-		this.first_name = first_name;
-		this.last_name = last_name;
-		this.phone_number = phone_number;
-		this.email_id = email_id;
-		this.password = password;
-		this.House_number = house_number;
-	}
 	public int getCustomer_id() {
 		return customer_id;
 	}
@@ -57,9 +52,41 @@ public class CustomerDto {
 		this.password = password;
 	}
 	public String getHouse_number() {
-		return House_number;
+		return house_number;
 	}
 	public void setHouse_number(String house_number) {
-		House_number = house_number;
+		this.house_number = house_number;
+		
 	}
+	public int getAddress_id() {
+		return address_id;
+	}
+	public void setAddress_id(int address_id) {
+		this.address_id = address_id;
+	}
+	public String getStreet_name() {
+		return street_name;
+	}
+	public void setStreet_name(String street_name) {
+		this.street_name = street_name;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public int getPincode() {
+		return pincode;
+	}
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+	
 }

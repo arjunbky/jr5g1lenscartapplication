@@ -27,21 +27,13 @@ public class OrdersService implements IOrdersService {
 		ordersDao.save(orders);
 		
 	}
+	
 //	** method to get all the details of Order**
 	public List<Orders> getAllOrders(){
 		List<Orders> orderslist=ordersDao.findAll();
 		return orderslist;
 	}
-//	**method to get orders by cart Id**
-	public Orders getOrdersByCartId(int cart_id) {
-		return ordersDao.getOrdersByCartId(cart_id);
-		
-	}
-//	**method to get customer details based on customer_id in the order table**
-	public List<Orders> getCustomerDetails(int customer_id) {
-		List<Orders> orderList=ordersDao.findAll();
-		return orderList;
-	}
+	
 //	**method to update the existing order in the table**
 	public String modifyOrder(int order_id, Orders orders) throws OrdersNotFoundException {
 		if(ordersDao.existsById(order_id)) {
@@ -57,15 +49,19 @@ public class OrdersService implements IOrdersService {
 		else 
 			throw new OrdersNotFoundException();
 	}
+	
 //	*method to delete the order based on order_id**
 	public String deleteOrder(int order_id) throws OrdersNotFoundException {
-		if(ordersDao.existsById(order_id)) {
+		List<Orders> ordersList=ordersDao.findAll();
+		for(Orders order:ordersList) {
+		if(order.getOrder_id()==order_id) {
 			ordersDao.deleteById(order_id);
 			return "order deleted";
 		}
-		else
+		}
 			throw new OrdersNotFoundException();
 	}
+
 	
 	
 }

@@ -10,15 +10,7 @@ public class PaymentDto {
 	private long card_number;
 	private int  order_id;
 	private boolean payment_status;
-	public PaymentDto(int payment_id, String card_name, int cvv, Date expiry_date, long card_number, int order_id,boolean payment_status) {
-		this.payment_id = payment_id;
-		this.card_name = card_name;
-		this.cvv = cvv;
-		this.expiry_date = expiry_date;
-		this.card_number = card_number;
-		this.order_id = order_id;
-		this.payment_status= payment_status;
-	}
+
 	public boolean isPayment_status() {
 		return payment_status;
 	}

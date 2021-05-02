@@ -1,6 +1,7 @@
 package com.cg.lenscartappln.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,29 +23,28 @@ import com.cg.lenscartappln.utils.CartNotFoundException;
 @RequestMapping("/cart")
 public class CartController {
 	@Autowired
-	CartService service;
+	CartService cartService;
 	@PostMapping("/insertcart")
 	public ResponseEntity<String> addCart(@RequestBody CartDto cartdto){
 		System.out.println(cartdto);
-		service.addCart(cartdto);
+		cartService.addCart(cartdto);
 		return new ResponseEntity<String>("Cart Added",HttpStatus.OK);
 	}
 	@GetMapping
-	public ResponseEntity<List<Cart>> getAllCarts(){
-		List<Cart> cartList=service.getAllCarts();
-		return new ResponseEntity<List<Cart>>(cartList,HttpStatus.OK);
+	public ResponseEntity<List<CartDto>> getAllCarts(){
+		List<CartDto> cartList=cartService.getAllCarts();
+		return new ResponseEntity<List<CartDto>>(cartList,HttpStatus.OK);
+	}
+	@GetMapping("/byid")
+	public ResponseEntity<Optional<Cart>> getCartById(@RequestParam int cart_id) throws CartNotFoundException{
+		Optional<Cart> cart =cartService.getCartById(cart_id);
+		return new ResponseEntity<Optional<Cart>>(cart,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deletecart")
 	public ResponseEntity<String> deleteCart(@RequestParam int cart_id) throws CartNotFoundException{
-		service.deleteCart(cart_id);
+		cartService.deleteCart(cart_id);
 		return new ResponseEntity<String>("Cart deleted",HttpStatus.OK);
 	}
-//	@PutMapping("/updatecart/{code}")
-//	public ResponseEntity<String> modifyCart(@PathVariable int cart_id,@RequestBody Cart cart){
-//		String str=service.modifyCart(cart_id, cart);
-//		return new ResponseEntity<String>(str,HttpStatus.OK);
-//	}
-
 
 }

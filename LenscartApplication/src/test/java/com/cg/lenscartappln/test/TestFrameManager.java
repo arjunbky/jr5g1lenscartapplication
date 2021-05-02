@@ -32,9 +32,9 @@ public class TestFrameManager {
 	@Test
 	public void testgetAllFrames() {
 		List<Frames> framesList=new ArrayList<Frames>();
-		framesList.add(new Frames(1,"circle","red","rayban",45732.32));
-		framesList.add(new Frames(2,"square","blue","TH",7292.90));
-		framesList.add(new Frames(3,"oval","green","rayban",6719.43));
+//		framesList.add(new Frames(1,"circle","red","rayban",45732.32));
+//		framesList.add(new Frames(2,"square","blue","TH",7292.90));
+//		framesList.add(new Frames(3,"oval","green","rayban",6719.43));
 		
 		Mockito.when(framesDao.findAll()).thenReturn(framesList);
 		List<Frames> list = frameService.getAllFrames();

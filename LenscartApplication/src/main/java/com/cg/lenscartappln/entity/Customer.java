@@ -2,7 +2,7 @@ package com.cg.lenscartappln.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,26 +35,22 @@ public class Customer implements Serializable {
 	
 	@Column(length = 20)
 	private String password;
-	//one to one mapping for customer and address
-	//only unidirectional
-//	@OneToOne(targetEntity = Address.class)
-//    @JoinColumn(name = "House_number")
-//    private Address address;
+//	one to one mapping for customer and address
+//	only unidirectional
 	
-	@Column(name ="House_number")
-	private String house_number;
+	@OneToOne(targetEntity = Address.class)
+    @JoinColumn(name = "address_id")
+    private Address address;
 	
-	@Column (name=" Street_name",length=20)
-	private String street_name;
 	
-	@Column (name="City ",length=20)
-	private String city;
-	
-	@Column(name="State",length=20)
-	private String state;
-	
-	@Column(name="Pincode",length=6)
-	private int pincode;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	private String message;
 	 
@@ -126,35 +122,5 @@ public class Customer implements Serializable {
 		this.password = password;
 	}
 
-	public String getHouse_number() {
-		return house_number;
-	}
-	public void setHouse_number(String house_number) {
-		this.house_number = house_number;
-	}
-	public String getStreet_name() {
-		return street_name;
-	}
-	public void setStreet_name(String street_name) {
-		this.street_name = street_name;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-	this.state = state;
-	}
-	public int getPincode() {
-		return pincode;
-	}
-	public void setPincode(int pincode) {
-		this.pincode = pincode;
-	}
 	
 }

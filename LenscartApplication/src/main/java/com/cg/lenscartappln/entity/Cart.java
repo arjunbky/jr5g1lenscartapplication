@@ -2,15 +2,18 @@
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -20,12 +23,15 @@ public class Cart  implements Serializable    {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int cart_id;
+
 @Column
 private int quantity;
+
 @Column
 private double price;
 
-@OneToMany(mappedBy = "cart")
+@OneToMany(mappedBy = "cart",targetEntity =Frames.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+@JsonManagedReference
 private List<Frames> frames;
 
 @OneToMany(mappedBy="cart")

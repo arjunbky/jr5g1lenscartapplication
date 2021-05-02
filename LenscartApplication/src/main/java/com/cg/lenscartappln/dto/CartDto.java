@@ -1,40 +1,58 @@
 package com.cg.lenscartappln.dto;
 
+import java.util.List;
+
 public class CartDto {
+	private int cart_id;
+	private int totalFrames;
+	private int totalLenses;
 	private int quantity;
-	private double price;
-	private int frame_id;
-	private int lens_id;
+	private List<FramesDto> frames;
+	private List<LensesDto> lenses;
+
 	
 	
+	
+	
+	public int getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(int cart_id) {
+		this.cart_id = cart_id;
+	}
+	public int getTotalFrames() {
+		return totalFrames;
+	}
+	public void setTotalFrames(int totalFrames) {
+		this.totalFrames = totalFrames;
+	}
+	public int getTotalLenses() {
+		return totalLenses;
+	}
+	public void setTotalLenses(int totalLenses) {
+		this.totalLenses = totalLenses;
+	}
 	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public double getPrice() {
-		return price;
+	public List<FramesDto> getFrames() {
+		return frames;
 	}
-	public void setPrice(double price) {
-		this.price = price;
+	public void setFrames(List<FramesDto> frames) {
+		this.frames = frames;
 	}
-	public int getFrame_id() {
-		return frame_id;
+	public List<LensesDto> getLenses() {
+		return lenses;
 	}
-	public void setFrame_id(int frame_id) {
-		this.frame_id = frame_id;
+	public void setLenses(List<LensesDto> lenses) {
+		this.lenses = lenses;
 	}
-	public int getLens_id() {
-		return lens_id;
-	}
-	public void setLens_id(int lens_id) {
-		this.lens_id = lens_id;
-	}
-	@Override
-	public String toString() {
-		return "CartDto [cart_id=" + ", quantity=" + quantity + ", price=" + price + ", frame_id=" + frame_id
-				+ ", lens_id=" + lens_id + "]";
-	}
+	
+	
 
+	
+	
 }

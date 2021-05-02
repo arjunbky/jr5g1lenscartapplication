@@ -3,7 +3,6 @@ package com.cg.lenscartappln.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,9 +50,6 @@ public class Orders implements Serializable{
 	public void setExpected_date_of_arrival(Date expected_date_of_arrival) {
 		this.expected_date_of_arrival = expected_date_of_arrival;
 	}
-
-	
-	
 
 	public Cart getCart() {
 		return cart;

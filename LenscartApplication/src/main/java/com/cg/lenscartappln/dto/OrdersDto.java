@@ -10,14 +10,7 @@ public class OrdersDto {
 	
 	private int cart_id;
 	private int customer_id;
-	public OrdersDto(int order_id, double total_cost, Date date_of_order, Date expected_date_of_arrival, int cart_id, int customer_id) {
-		this.order_id = order_id;
-		this.total_cost = total_cost;
-		this.date_of_order = date_of_order;
-		this.expected_date_of_arrival = expected_date_of_arrival;
-		this.cart_id = cart_id;
-		this.customer_id = customer_id;
-	}
+	
 	public int getOrder_id() {
 		return order_id;
 	}
