@@ -2,6 +2,7 @@ package com.cg.lenscartappln.dto;
 
 
 public class FramesDto {
+
 	private int frame_id;
 	private String frame_shape;
 	private String frame_colour;
@@ -10,7 +11,12 @@ public class FramesDto {
 	private CartDto cart;
 	
 	
-	
+	public int getFrame_id() {
+		return frame_id;
+	}
+	public void setFrame_id(int frame_id) {
+		this.frame_id = frame_id;
+	}
 
 	public String getFrame_shape() {
 		return frame_shape;

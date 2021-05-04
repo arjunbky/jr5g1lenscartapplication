@@ -30,7 +30,7 @@ public class FramesController {
 		FramesService service;
 	
 	@PostMapping	
-	public ResponseEntity<String> addLenses(@RequestBody FramesDto framesDto){
+	public ResponseEntity<String> addFrames(@RequestBody FramesDto framesDto){
 //			Frames frame=new Frames();
 //			frame.setFrame_shape(frame_shape);
 //			frame.setFrame_colour(frame_colour);

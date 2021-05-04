@@ -2,10 +2,8 @@
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,15 +38,17 @@ private List<Lenses> lenses;
 
 
 
+public Cart() {
+	// TODO Auto-generated constructor stub
+}
 
-//public Cart(CartDto cartDto,int cart_id, int quantity, double price, Frames frames, Lenses lenses) {
-//	this.cart_id = cart_id;
-//	this.quantity = quantity;
-//	this.price = price;
-//	this.frames = frames;
-//	this.lenses = lenses;
-//}
-
+public Cart(int cart_id, int quantity, double price, List<Frames> frames, List<Lenses> lenses) {
+	this.cart_id = cart_id;
+	this.quantity = quantity;
+	this.price = price;
+	this.frames = frames;
+	this.lenses = lenses;
+}
 public int getCart_id() {
 	return cart_id;
 }

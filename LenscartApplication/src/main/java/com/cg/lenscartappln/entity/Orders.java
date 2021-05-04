@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.cg.lenscartappln.dto.CartDto;
+
 @Entity
 @Table(name="Orders")
 public class Orders implements Serializable{
@@ -20,10 +22,24 @@ public class Orders implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int order_id;
 	
-
-	
 	@Column(name="total_cost")
 	private double total_cost;
+
+	@Column(name="date_of_order")
+	private Date date_of_order;
+	
+	@Column(name="expected_date_of_arrival")
+	private Date expected_date_of_arrival;
+	
+	@OneToOne(targetEntity = Cart.class)
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
+	
+	
+	@OneToOne(targetEntity = Customer.class)
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
+	
 	
 	
 
@@ -67,21 +83,6 @@ public class Orders implements Serializable{
 		this.customer = customer;
 	}
 
-	@Column(name="date_of_order")
-	private Date date_of_order;
-	
-	@Column(name="expected_date_of_arrival")
-	private Date expected_date_of_arrival;
-	
-	@OneToOne
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
-	
-	
-	@OneToOne
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
-	
 	public Orders() {
 		
 	}

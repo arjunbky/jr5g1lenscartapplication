@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.dto.LensesDto;
@@ -38,12 +38,12 @@ public class LensesController {
 	}
 	
 	@DeleteMapping("/deletelenses")
-	public ResponseEntity<String> deleteLenses(@RequestBody int lens_id) throws LensesNotFoundException{
+	public ResponseEntity<String> deleteLenses(@RequestParam int lens_id) throws LensesNotFoundException{
 		String str=service.deleteLenses(lens_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatelenses/{code}")
-	public ResponseEntity<String> modifyLenses(@PathVariable int lens_id,@RequestBody Lenses lens ) throws LensesNotFoundException{
+	public ResponseEntity<String> modifyLenses(@RequestParam int lens_id,@RequestBody Lenses lens ) throws LensesNotFoundException{
 		String str=service.modifyLenses(lens_id, lens);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}

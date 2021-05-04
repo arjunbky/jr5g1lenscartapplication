@@ -17,12 +17,14 @@ import com.cg.lenscartappln.dto.CartDto;
 import com.cg.lenscartappln.entity.Cart;
 
 import com.cg.lenscartappln.utils.CartNotFoundException;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
 @Service
+
 public class CartService implements ICartService {
 	@Autowired
 	ICartDao cartDao;
@@ -33,46 +35,47 @@ public class CartService implements ICartService {
 	@Autowired 
 	ILensesDao lensesdao;
 	
-	//**method to add the frames and lenses by their ID to the cart**
-		public void addCart(CartDto cartdto) {
-			Cart cart=new Cart();	
+//**method to add the frames and lenses by their ID to the cart**
+		public void addCart(Cart cart) {
+//			Cart cart=new Cart();	
 				cartDao.save(cart);
 		
 			
 		}
   
 //**method to get all the items present in the cart**
-	public List<CartDto> getAllCarts(){
-		List<Cart> cartList=cartDao.findAll();
-		List<CartDto> cartDtoList=new ArrayList<CartDto>();
+		public List<CartDto> getAllCarts(){
+			List<Cart> cartList=cartDao.findAll();
+			List<CartDto> cartDtoList=new ArrayList<CartDto>();
 		
-		for(Cart cart:cartList ) {
-			CartDto cartDto=new CartDto();
-			ObjectMapper mapper = new ObjectMapper();
-			mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+			for(Cart cart:cartList ) {
+				CartDto cartDto=new CartDto();
+				ObjectMapper mapper = new ObjectMapper();
+				mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 			
+				
+				cartDto=mapper.convertValue(cart, CartDto.class);
 			
-			cartDto=mapper.convertValue(cart, CartDto.class);
-			
-			int frameCount=0;
-			int lenseCount=0;
-			if(cartDto.getFrames() != null && !cartDto.getFrames().isEmpty()) {
+				int frameCount=0;
+				int lenseCount=0;
+				if(cartDto.getFrames() != null && !cartDto.getFrames().isEmpty()) {
 				
-				frameCount=cartDto.getFrames().size();
+					frameCount=cartDto.getFrames().size();
 				
 				
-			}
-			if(cartDto.getLenses() != null && !cartDto.getLenses().isEmpty()) {
+				}
+				if(cartDto.getLenses() != null && !cartDto.getLenses().isEmpty()) {
 				
 				lenseCount=cartDto.getLenses().size();
+				
+				}
+			
+				cartDto.setTotalFrames(frameCount);
+				cartDto.setTotalLenses(lenseCount);
+				cartDto.setQuantity(frameCount+lenseCount);
+				cartDtoList.add(cartDto);
+			
 			}
-			
-			cartDto.setTotalFrames(frameCount);
-			cartDto.setTotalLenses(lenseCount);
-			cartDto.setQuantity(frameCount+lenseCount);
-			cartDtoList.add(cartDto);
-			
-		}
 		
 		return cartDtoList;
 	}

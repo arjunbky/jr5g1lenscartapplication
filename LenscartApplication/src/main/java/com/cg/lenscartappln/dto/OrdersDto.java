@@ -2,14 +2,17 @@ package com.cg.lenscartappln.dto;
 
 import java.util.Date;
 
+import com.cg.lenscartappln.entity.Cart;
+import com.cg.lenscartappln.entity.Customer;
+
 public class OrdersDto {
 	private int order_id;
 	private double total_cost;
 	private Date date_of_order;
 	private Date expected_date_of_arrival;
 	
-	private int cart_id;
-	private int customer_id;
+	private Cart cart;
+	private Customer customer;
 	
 	public int getOrder_id() {
 		return order_id;
@@ -36,16 +39,19 @@ public class OrdersDto {
 		this.expected_date_of_arrival = expected_date_of_arrival;
 	}
 
-	public int getCart_id() {
-		return cart_id;
+	
+	
+	public Cart getCart() {
+		return cart;
 	}
-	public void setCart_id(int cart_id) {
-		this.cart_id = cart_id;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
-	public int getCustomer_id() {
-		return customer_id;
+	public Customer getCustomer() {
+		return customer;
 	}
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+	
 }

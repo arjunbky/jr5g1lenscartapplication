@@ -1,6 +1,5 @@
 package com.cg.lenscartappln.dto;
 
-import com.cg.lenscartappln.entity.Cart;
 
 public class LensesDto {
 	private int lens_id;

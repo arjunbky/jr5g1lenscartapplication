@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 import com.cg.lenscartappln.dao.ICartDao;
 import com.cg.lenscartappln.dao.ICustomerDao;
 import com.cg.lenscartappln.dao.IOrdersDao;
+import com.cg.lenscartappln.dto.OrdersDto;
 import com.cg.lenscartappln.entity.Orders;
 import com.cg.lenscartappln.utils.OrdersNotFoundException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class OrdersService implements IOrdersService {
@@ -23,8 +26,20 @@ public class OrdersService implements IOrdersService {
 	ICustomerDao customerDao;
   
 //	** method to add the order details to Orders table **
-	public void addOrders(Orders orders) {
-		ordersDao.save(orders);
+	public void addOrders(OrdersDto ordersDto) {
+		Orders order=new Orders();
+		order.setOrder_id(ordersDto.getOrder_id());
+		order.setDate_of_order(ordersDto.getDate_of_order());
+		order.setExpected_date_of_arrival(ordersDto.getExpected_date_of_arrival());
+		order.setCart(ordersDto.getCart());;
+		order.setCustomer(ordersDto.getCustomer());
+		order.setTotal_cost(ordersDto.getTotal_cost());
+////		
+//		ObjectMapper mapper=new ObjectMapper();
+//		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+//		
+//		order=mapper.convertValue(ordersDto, Orders.class);
+		ordersDao.save(order);
 		
 	}
 	
