@@ -61,7 +61,7 @@ public class CustomerService implements ICustomerService {
 			throw new CustomerNotFoundException();
 	}
 //**method to update the existing customer details in the table**
-	public String modifyCustomer(int customer_id,CustomerDto cust) throws CustomerNotFoundException {
+	public String modifyCustomer(int customer_id,Customer cust) throws CustomerNotFoundException {
 		if(customerDao.existsById(customer_id)) {
 			Customer customer=customerDao.findById(customer_id).get();
 			customer.setFirst_name(cust.getFirst_name());
@@ -69,12 +69,8 @@ public class CustomerService implements ICustomerService {
 			customer.setPhone_number(cust.getPhone_number());
 			customer.setEmail_id(cust.getEmail_id());
 			customer.setPassword(cust.getPassword());
-			Address address =new Address();
-			address.setHouse_number(cust.getHouse_number());
-			address.setCity(cust.getCity());
-			address.setState(cust.getState());
-			address.setPincode(cust.getPincode());
-			customer.setAddress(address);
+			
+			
 			customerDao.save(customer);
 			return "Customer Updated";
 		}

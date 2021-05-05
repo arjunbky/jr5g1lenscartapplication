@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.dto.CustomerDto;
+import com.cg.lenscartappln.entity.Address;
 import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.service.CustomerService;
 import com.cg.lenscartappln.utils.CustomerNotFoundException;
@@ -47,12 +49,12 @@ public class CustomerController {
 	}
 	
 	@DeleteMapping("/deletecustomer")
-	public ResponseEntity<String> deleteCustomer(@RequestBody int customer_id) throws CustomerNotFoundException{
+	public ResponseEntity<String> deleteCustomer(@RequestParam int customer_id) throws CustomerNotFoundException{
 		String str=customerService.deleteCustomer(customer_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
-	@PutMapping("/updatecust/{code}")
-	public ResponseEntity<String> modifyCustomer(@PathVariable int customer_id,@RequestBody CustomerDto cust) throws CustomerNotFoundException{
+	@PutMapping("/updatecust")
+	public ResponseEntity<String> modifyCustomer(@RequestParam int customer_id,@RequestBody Customer cust) throws CustomerNotFoundException{
 		String str=customerService.modifyCustomer(customer_id, cust);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
