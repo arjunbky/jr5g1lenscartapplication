@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.IOrdersDao;
 import com.cg.lenscartappln.dao.IPaymentDao;
+import com.cg.lenscartappln.dto.PaymentDto;
 import com.cg.lenscartappln.entity.Payment;
 import com.cg.lenscartappln.utils.PaymentNotFoundException;
 
@@ -18,7 +19,14 @@ public class PaymentService implements IPaymentService {
 	IOrdersDao ordersDao;
 	
 //** method to add payment details**
-	public void addPayment(Payment payment) {
+	public void addPayment(PaymentDto paymentDto) {
+		Payment payment =new Payment();
+		payment.setPayment_id(paymentDto.getPayment_id());
+		payment.setCard_name(paymentDto.getCard_name());
+        payment.setCard_number(paymentDto.getCard_number());
+        payment.setCvv(paymentDto.getCvv());
+        payment.setExpiry_date(paymentDto.getExpiry_date());
+        payment.setOrders(paymentDto.getOrder());
 		paymentDao.save(payment);  
 	}
 	

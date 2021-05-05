@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.lenscartappln.dto.PaymentDto;
 import com.cg.lenscartappln.entity.Payment;
 import com.cg.lenscartappln.service.PaymentService;
 import com.cg.lenscartappln.utils.PaymentNotFoundException;
@@ -22,8 +23,8 @@ public class PaymentController {
 	PaymentService service;
 	
 	@PostMapping("/insertpayment")
-	public ResponseEntity<String> addPayment(@RequestBody Payment payment){
-		service.addPayment(payment);
+	public ResponseEntity<String> addPayment(@RequestBody PaymentDto paymentDto){
+		service.addPayment(paymentDto);
 		return new ResponseEntity<String>("Customer Added",HttpStatus.OK);
 	}
 	@GetMapping

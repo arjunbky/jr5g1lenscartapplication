@@ -26,15 +26,15 @@ public class CustomerService implements ICustomerService {
 	
 	//** method to add customer details to the customer table**
 	public void addCustomer(CustomerDto customerdto) {
-//		customerDao.save(customer); 
+
 		Customer customer=new Customer();
-//		customer.setCustomer_id(customerdto.getCustomer_id());
+
 		customer.setFirst_name(customerdto.getFirst_name());
 		customer.setLast_name(customerdto.getLast_name());
 		customer.setEmail_id(customerdto.getEmail_id());
 		customer.setPassword(customerdto.getPassword());
-//		customer.setMessage(customerdto.g);
-//		customer.se
+
+
 		Address address=new Address();
     	address.setAddress_id(customerdto.getAddress_id());
 		address.setHouse_number(customerdto.getHouse_number());
@@ -58,7 +58,7 @@ public class CustomerService implements ICustomerService {
 			return "Customer Deleted";
 		}
 		else
-		throw new CustomerNotFoundException();
+			throw new CustomerNotFoundException();
 	}
 //**method to update the existing customer details in the table**
 	public String modifyCustomer(int customer_id,CustomerDto cust) throws CustomerNotFoundException {

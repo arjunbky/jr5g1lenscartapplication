@@ -31,13 +31,7 @@ public class FramesController {
 	
 	@PostMapping	
 	public ResponseEntity<String> addFrames(@RequestBody FramesDto framesDto){
-//			Frames frame=new Frames();
-//			frame.setFrame_shape(frame_shape);
-//			frame.setFrame_colour(frame_colour);
-//			frame.setFrame_brand(frame_brand);
-//			frame.setFrame_price(frame_price);
-//			service.addFrames(frame);
-//			return new ResponseEntity<String>("Frames Added",HttpStatus.OK);
+
 	 	  service.addFrames(framesDto);
 		return new ResponseEntity<String>("frames Added",HttpStatus.OK);
 		}

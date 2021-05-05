@@ -3,7 +3,6 @@ package com.cg.lenscartappln.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.*;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -83,12 +82,7 @@ public class TestCartManager {
 		lenses.setCart(null);
 		 lensesList.add(lenses);
 		 
-		 Cart cart=new Cart();
-		 cart.setCart_id(1);
-		 cart.setFrames(framesList);
-		 cart.setLenses(lensesList);
-		 cart.setQuantity(2);
-		 cart.setPrice(5643.5);
+		
 		 cartList.add(new Cart(1,23,456.32,framesList,lensesList));
 		cartList.add(new Cart(2,23,456.32,framesList,lensesList));
 		
@@ -96,7 +90,7 @@ public class TestCartManager {
 		 List<CartDto> list=cartService.getAllCarts();
 		 Assertions.assertEquals(2,list.size());
 		 Mockito.verify(cartDao,Mockito.times(1)).findAll();
-		 
+	
 		 
 	}
 	

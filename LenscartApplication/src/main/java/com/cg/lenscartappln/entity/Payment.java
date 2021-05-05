@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Payment implements Serializable {
 		@Column(name="card_number",length=16)
 		private long card_number;
 		
-		@OneToOne
+		@OneToOne(fetch = FetchType.EAGER)
 		@JoinColumn(name = "order_id")
 		private Orders orders;
 		

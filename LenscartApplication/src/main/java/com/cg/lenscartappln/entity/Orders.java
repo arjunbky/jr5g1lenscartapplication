@@ -12,8 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.cg.lenscartappln.dto.CartDto;
-
 @Entity
 @Table(name="Orders")
 public class Orders implements Serializable{

@@ -11,8 +11,6 @@ import com.cg.lenscartappln.dao.IOrdersDao;
 import com.cg.lenscartappln.dto.OrdersDto;
 import com.cg.lenscartappln.entity.Orders;
 import com.cg.lenscartappln.utils.OrdersNotFoundException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class OrdersService implements IOrdersService {
@@ -34,11 +32,6 @@ public class OrdersService implements IOrdersService {
 		order.setCart(ordersDto.getCart());;
 		order.setCustomer(ordersDto.getCustomer());
 		order.setTotal_cost(ordersDto.getTotal_cost());
-////		
-//		ObjectMapper mapper=new ObjectMapper();
-//		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//		
-//		order=mapper.convertValue(ordersDto, Orders.class);
 		ordersDao.save(order);
 		
 	}

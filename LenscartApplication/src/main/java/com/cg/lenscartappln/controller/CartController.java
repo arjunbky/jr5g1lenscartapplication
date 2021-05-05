@@ -26,7 +26,6 @@ public class CartController {
 	CartService cartService;
 	@PostMapping("/insertcart")
 	public ResponseEntity<String> addCart(@RequestBody Cart cart){
-		System.out.println(cart);
 		cartService.addCart(cart);
 		return new ResponseEntity<String>("Cart Added",HttpStatus.OK);
 	}

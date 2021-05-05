@@ -2,13 +2,15 @@ package com.cg.lenscartappln.dto;
 
 import java.util.Date;
 
+import com.cg.lenscartappln.entity.Orders;
+
 public class PaymentDto {
 	private int payment_id;
 	private String card_name;
 	private int cvv;
 	private Date expiry_date;
 	private long card_number;
-	private int  order_id;
+	private Orders  order;
 	private boolean payment_status;
 
 	public boolean isPayment_status() {
@@ -47,10 +49,11 @@ public class PaymentDto {
 	public void setCard_number(long card_number) {
 		this.card_number = card_number;
 	}
-	public int getOrder_id() {
-		return order_id;
+	public Orders getOrder() {
+		return order;
 	}
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
+	public void setOrder(Orders order) {
+		this.order = order;
 	}
+	
 }

@@ -12,12 +12,10 @@ import com.cg.lenscartappln.dao.ICartDao;
 import com.cg.lenscartappln.dao.IFramesDao;
 import com.cg.lenscartappln.dao.ILensesDao;
 import com.cg.lenscartappln.dto.CartDto;
-//import com.cg.lenscart.dto.FramesDto;
-//import com.cg.lenscart.dto.LensesDto;
+
 import com.cg.lenscartappln.entity.Cart;
 
 import com.cg.lenscartappln.utils.CartNotFoundException;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

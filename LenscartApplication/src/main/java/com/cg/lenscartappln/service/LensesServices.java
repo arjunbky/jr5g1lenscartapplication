@@ -20,11 +20,6 @@ public class LensesServices implements ILensesService{
 	@Override
 	public void addLenses(LensesDto lensesdto) {
 		Lenses lens=new Lenses();
-//		lens.setLens_id( lensesdto.getLens_id());
-//		lens.setLens_power( lensesdto.getLens_power());
-//		lens.setLens_brand( lensesdto.getLens_brand());
-//		lens.setLens_type( lensesdto.getLens_type());
-//		lens.setLens_price( lensesdto.getLens_price());
 		ObjectMapper mapper=new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		lens=mapper.convertValue(lensesdto, Lenses.class);
