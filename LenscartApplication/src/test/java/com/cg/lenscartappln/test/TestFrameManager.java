@@ -14,6 +14,8 @@ import org.mockito.Mockito;
 
 import org.mockito.junit.MockitoJUnitRunner;
 import com.cg.lenscartappln.dao.IFramesDao;
+import com.cg.lenscartappln.dto.FramesDto;
+import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.service.FramesService;
 
@@ -32,9 +34,11 @@ public class TestFrameManager {
 	@Test
 	public void testgetAllFrames() {
 		List<Frames> framesList=new ArrayList<Frames>();
-//		framesList.add(new Frames(1,"circle","red","rayban",45732.32));
-//		framesList.add(new Frames(2,"square","blue","TH",7292.90));
-//		framesList.add(new Frames(3,"oval","green","rayban",6719.43));
+		Cart cart=new Cart();
+		
+		framesList.add(new Frames(1,"circle","red","rayban",45732.32,cart));
+		framesList.add(new Frames(2,"square","blue","TH",7292.90,cart));
+		framesList.add(new Frames(3,"oval","green","rayban",6719.43,cart));
 		
 		Mockito.when(framesDao.findAll()).thenReturn(framesList);
 		List<Frames> list = frameService.getAllFrames();
@@ -50,6 +54,7 @@ public class TestFrameManager {
 		frames.setFrame_shape("circle");
 		frames.setFrame_price(4593.78);
 //		frameService.addFrames(frames);
+		
 		framesDao.save(frames);
 		Assert.assertNotNull(frames.getFrame_id());
 		Mockito.verify(framesDao, Mockito.times(1)).save(frames);

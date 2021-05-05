@@ -17,17 +17,20 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="Frames")
 public class Frames  implements Serializable {
 public Frames() {
-	// TODO Auto-generated constructor stub
+	
 }
-//	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
-//			Cart cart) {
-//		this.frame_id = frame_id;
-//		this.frame_shape = frame_shape;
-//		this.frame_colour = frame_colour;
-//		this.frame_brand = frame_brand;
-//		this.frame_price = frame_price;
-//		this.cart = cart;
-//	}
+
+
+	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
+		Cart cart) {
+	this.frame_id = frame_id;
+	this.frame_shape = frame_shape;
+	this.frame_colour = frame_colour;
+	this.frame_brand = frame_brand;
+	this.frame_price = frame_price;
+	this.cart = cart;
+}
+
 
 	private static final long serialVersionUID = 1L;
 	@Id

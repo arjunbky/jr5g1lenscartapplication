@@ -17,9 +17,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="Lenses")
 public class Lenses {
 	public Lenses() {
-	// TODO Auto-generated constructor stub
+	
 }
 	
+	
+
 	public Lenses(int lens_id, float lens_power, String lens_brand, String lens_type, double lens_price, Cart cart) {
 		this.lens_id = lens_id;
 		this.lens_power = lens_power;
@@ -28,6 +30,8 @@ public class Lenses {
 		this.lens_price = lens_price;
 		this.cart = cart;
 	}
+
+
 
 	@Id
 	
