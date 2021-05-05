@@ -62,7 +62,9 @@ public void testgetOrders() {
 	Date dateOfArrival=Date.valueOf("2021-04-01");
 	
 	List<Orders> ordersList=new ArrayList<>();
+	
 	ordersList.add(new Orders(2,345.3,dateOfOrder,dateOfArrival,cart,customer)); 
+	Mockito.when(orderDao.findAll()).thenReturn(ordersList);
 	List<Orders> list=orderService.getAllOrders();
 	Assertions.assertEquals(2,list.size());
 	Mockito.verify(orderDao,Mockito.times(1)).findAll();

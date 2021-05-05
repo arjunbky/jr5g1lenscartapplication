@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.dto.PaymentDto;
@@ -34,7 +35,7 @@ public class PaymentController {
 	}
 	
 	@DeleteMapping("/deletepayment")
-	public ResponseEntity<String> cancelAllPayment(@RequestBody int payment_id) throws PaymentNotFoundException{
+	public ResponseEntity<String> cancelAllPayment(@RequestParam int payment_id) throws PaymentNotFoundException{
 		String str=service.cancelAllPayment(payment_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
