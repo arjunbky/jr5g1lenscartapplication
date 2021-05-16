@@ -1,3 +1,4 @@
+
 package com.cg.lenscartappln.controller;
 
 import java.util.List;
@@ -8,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.lenscartappln.dto.CustomerDto;
-import com.cg.lenscartappln.entity.Address;
+import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Customer;
+import com.cg.lenscartappln.service.CartService;
 import com.cg.lenscartappln.service.CustomerService;
 import com.cg.lenscartappln.utils.CustomerNotFoundException;
 
@@ -30,10 +31,15 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
+	@Autowired
+	CartService cartService;
+	
 	@PostMapping("/validate")
 	public ResponseEntity<Customer> validate(@RequestBody Customer customer){
 		Customer log=customerService.validate(customer.getEmail_id(),customer.getPassword());
-		
+		Cart cart=new Cart();
+		cart.setCart_id(1);
+		cartService.addCart(cart);
 		return new ResponseEntity<Customer>(log,HttpStatus.OK);
 	}
 	

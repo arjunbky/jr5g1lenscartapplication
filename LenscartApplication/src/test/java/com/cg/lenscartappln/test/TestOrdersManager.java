@@ -36,8 +36,7 @@ public void testgetOrders() {
 	cart.setCart_id(1);
 	cart.setFrames(null);
 	cart.setLenses(null);
-	cart.setQuantity(2);
-	cart.setPrice(5643.5);
+
 	
 
 	Address address = new Address();
@@ -66,7 +65,7 @@ public void testgetOrders() {
 	ordersList.add(new Orders(2,345.3,dateOfOrder,dateOfArrival,cart,customer)); 
 	Mockito.when(orderDao.findAll()).thenReturn(ordersList);
 	List<Orders> list=orderService.getAllOrders();
-	Assertions.assertEquals(2,list.size());
+	Assertions.assertEquals(1,list.size());
 	Mockito.verify(orderDao,Mockito.times(1)).findAll();
 	
 }

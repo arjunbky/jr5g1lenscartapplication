@@ -14,7 +14,7 @@ import com.cg.lenscartappln.dao.ILensesDao;
 import com.cg.lenscartappln.dto.CartDto;
 
 import com.cg.lenscartappln.entity.Cart;
-
+import com.cg.lenscartappln.entity.Customer;
 import com.cg.lenscartappln.utils.CartNotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,8 +34,7 @@ public class CartService implements ICartService {
 	ILensesDao lensesdao;
 	
 //**method to add the frames and lenses by their ID to the cart**
-		public void addCart(Cart cart) {
-//			Cart cart=new Cart();	
+		public void addCart(Cart cart) {	
 				cartDao.save(cart);
 		
 			
@@ -104,6 +103,10 @@ public class CartService implements ICartService {
 			 	throw new CartNotFoundException();
 		}
 
+	public Cart getCartByCustomer(int customer_id) {
+		return cartDao.getCartByCustomer(customer_id);
+		
+	}
 
 
 }

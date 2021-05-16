@@ -17,7 +17,6 @@ public class AddressService {
 	public void addAddress(CustomerDto customerdto) {
 //		addressDao.save(address);
 		Address address=new Address();
-		address.setAddress_id(customerdto.getAddress_id());
 		address.setHouse_number(customerdto.getHouse_number());
 		address.setCity(customerdto.getCity());
 		address.setState(customerdto.getState());

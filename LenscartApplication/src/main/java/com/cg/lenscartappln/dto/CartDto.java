@@ -2,6 +2,8 @@ package com.cg.lenscartappln.dto;
 
 import java.util.List;
 
+import com.cg.lenscartappln.entity.Customer;
+
 public class CartDto {
 	private int cart_id;
 	private int totalFrames;
@@ -9,7 +11,7 @@ public class CartDto {
 	private int quantity;
 	private List<FramesDto> frames;
 	private List<LensesDto> lenses;
-
+    private Customer customer;
 	
 	
 	
@@ -49,6 +51,12 @@ public class CartDto {
 	}
 	public void setLenses(List<LensesDto> lenses) {
 		this.lenses = lenses;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 	
 	

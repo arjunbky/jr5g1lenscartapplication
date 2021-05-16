@@ -39,8 +39,9 @@ public class Customer implements Serializable {
 //	only unidirectional
 	
 	@OneToOne(targetEntity = Address.class)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id",unique = true)
     private Address address;
+	
 	
 	
 
@@ -121,6 +122,8 @@ public class Customer implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	
 
 	
 }

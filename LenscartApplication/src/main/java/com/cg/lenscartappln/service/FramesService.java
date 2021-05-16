@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.IFramesDao;
 import com.cg.lenscartappln.dto.FramesDto;
+import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.utils.FrameNotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -23,7 +24,9 @@ public class FramesService implements IFramesService {
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		Frames frameObj=new Frames();
 		frameObj=mapper.convertValue(framesdto, Frames.class);
-		
+		Cart cart=new Cart();
+		cart.setCart_id(1);
+		frameObj.setCart(cart);
 		framesDao.save(frameObj);
 	}
 	

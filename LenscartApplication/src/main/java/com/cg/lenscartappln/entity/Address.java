@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "Address")
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = false,unique = true)
 	private int address_id;
 	
 	@Column(name ="House_number")
@@ -28,6 +28,9 @@ public class Address {
 	
 	@Column(name="Pincode",length=6)
 	private int pincode;
+	
+	
+	private String message;
 
 	public int getAddress_id() {
 		return address_id;
@@ -75,6 +78,14 @@ public class Address {
 
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 }

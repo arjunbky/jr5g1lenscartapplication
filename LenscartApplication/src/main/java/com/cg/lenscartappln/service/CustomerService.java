@@ -3,6 +3,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.cg.lenscartappln.dao.IAddressDao;
 import com.cg.lenscartappln.dao.ICustomerDao;
 import com.cg.lenscartappln.dto.CustomerDto;
 import com.cg.lenscartappln.entity.Address;
@@ -14,6 +16,8 @@ import com.cg.lenscartappln.utils.CustomerNotFoundException;
 public class CustomerService implements ICustomerService {
 	@Autowired
 	ICustomerDao customerDao;
+	@Autowired
+	IAddressDao addressDao;
 	
 	public Customer validate(String email_id,String password) {
 		Customer customer =customerDao.validate(email_id,password);
@@ -28,13 +32,6 @@ public class CustomerService implements ICustomerService {
 	public void addCustomer(CustomerDto customerdto) {
 
 		Customer customer=new Customer();
-
-		customer.setFirst_name(customerdto.getFirst_name());
-		customer.setLast_name(customerdto.getLast_name());
-		customer.setEmail_id(customerdto.getEmail_id());
-		customer.setPassword(customerdto.getPassword());
-
-
 		Address address=new Address();
     	address.setAddress_id(customerdto.getAddress_id());
 		address.setHouse_number(customerdto.getHouse_number());
@@ -42,9 +39,26 @@ public class CustomerService implements ICustomerService {
 		address.setStreet_name(customerdto.getStreet_name());
 		address.setState(customerdto.getState());
 		address.setPincode(customerdto.getPincode());
+	 
+		if(addressDao.findById(address.getAddress_id()).isEmpty()) {
+			
 
-		customer.setAddress(address);
-	    customerDao.save(customer);
+			customer.setFirst_name(customerdto.getFirst_name());
+			customer.setLast_name(customerdto.getLast_name());
+			customer.setEmail_id(customerdto.getEmail_id());
+			customer.setPassword(customerdto.getPassword());
+
+
+			customer.setAddress(address);
+			addressDao.save(address);
+			   customerDao.save(customer);
+			}
+		else {
+		customer.setMessage("invalid Address");
+		customerDao.save(customer);
+		}
+		
+		
 	}
 //** method to get all the customer details **
 	public List<Customer> getAllCustomer(){

@@ -1,5 +1,6 @@
 package com.cg.lenscartappln.dto;
 
+import com.cg.lenscartappln.entity.Address;
 
 public class CustomerDto {
 	private int customer_id;
@@ -8,12 +9,15 @@ public class CustomerDto {
 	private long phone_number;
 	private String email_id;
 	private String password;
-	private int address_id ; 
+ 
+	private int address_id;
 	private String house_number;
 	private String street_name;
 	private String city;
 	private String state;
 	private int pincode;
+	private String message;
+	
 	
 	public int getCustomer_id() {
 		return customer_id;
@@ -58,12 +62,7 @@ public class CustomerDto {
 		this.house_number = house_number;
 		
 	}
-	public int getAddress_id() {
-		return address_id;
-	}
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
-	}
+	
 	public String getStreet_name() {
 		return street_name;
 	}
@@ -88,5 +87,19 @@ public class CustomerDto {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
+	public int getAddress_id() {
+		return address_id;
+	}
+	public void setAddress_id(int address_id) {
+		this.address_id = address_id;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	
 	
 }

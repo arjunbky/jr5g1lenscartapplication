@@ -23,6 +23,7 @@ import com.cg.lenscartappln.service.CartService;
 public class TestCartManager {
 	@InjectMocks
 	CartService cartService;
+	
 	@Mock
 	ICartDao cartDao;
 	
@@ -50,9 +51,8 @@ public class TestCartManager {
 		 cart.setCart_id(1);
 		 cart.setFrames(framesList);
 		 cart.setLenses(lensesList);
-		 cart.setQuantity(2);
-		 cart.setPrice(5643.5);
-		
+
+		 
 		 cartDao.save(cart);
 		 
 		 Assert.assertNotNull(cart.getCart_id());
