@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.cg.lenscartappln.dao.ILensesDao;
 import com.cg.lenscartappln.dto.LensesDto;
+import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.utils.LensesNotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -23,6 +24,9 @@ public class LensesServices implements ILensesService{
 		ObjectMapper mapper=new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		lens=mapper.convertValue(lensesdto, Lenses.class);
+		Cart cart=new Cart();
+		cart.setCart_id(1);
+		lens.setCart(cart);
 		lensesDao.save(lens);
 	}
 //**method to get the details of all the lenses in the table**

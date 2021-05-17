@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +20,14 @@ import com.cg.lenscartappln.dto.LensesDto;
 import com.cg.lenscartappln.entity.Lenses;
 import com.cg.lenscartappln.service.LensesServices;
 import com.cg.lenscartappln.utils.LensesNotFoundException;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/lenses")
 public class LensesController {
 	@Autowired
 	LensesServices service;
 	
-	@PostMapping("/insertlenses")
+	@PostMapping
 	public ResponseEntity<String> addLenses(@RequestBody LensesDto lensesDto){ //change to lensesdto
 		service.addLenses(lensesDto);
 		return new ResponseEntity<String>("Lenses Added",HttpStatus.OK);
