@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,8 +41,8 @@ public class FramesController {
 			return new ResponseEntity<List<Frames>>(framesList,HttpStatus.OK);
 		}
 		
-		@DeleteMapping("/deleteframes")
-		public ResponseEntity<String> deleteFrames(@RequestParam int frame_id) throws FrameNotFoundException{
+		@DeleteMapping("/deleteframes/{frame_id}")
+		public ResponseEntity<String> deleteFrames(@PathVariable("frame_id") int frame_id) throws FrameNotFoundException{
 			service.deleteFrames(frame_id);
 			return new ResponseEntity<String>("frame deleted",HttpStatus.OK);
 		}

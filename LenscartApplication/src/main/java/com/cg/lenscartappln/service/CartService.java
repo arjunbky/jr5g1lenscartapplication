@@ -12,10 +12,10 @@ import com.cg.lenscartappln.dao.ICartDao;
 import com.cg.lenscartappln.dao.IFramesDao;
 import com.cg.lenscartappln.dao.ILensesDao;
 import com.cg.lenscartappln.dto.CartDto;
-
 import com.cg.lenscartappln.entity.Cart;
-import com.cg.lenscartappln.entity.Customer;
+import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.utils.CartNotFoundException;
+import com.cg.lenscartappln.utils.FrameNotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -94,6 +94,7 @@ public class CartService implements ICartService {
 	public String deleteCart(int cart_id) throws CartNotFoundException {
 			
 			 List<Cart> cartList=cartDao.findAll();
+			
 			 for(Cart carts:cartList) {
 				 if(carts.getCart_id()==cart_id) {
 					 cartDao.deleteById(cart_id);
@@ -107,6 +108,7 @@ public class CartService implements ICartService {
 		return cartDao.getCartByCustomer(customer_id);
 		
 	}
+	
 
 
 }

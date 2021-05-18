@@ -15,7 +15,5 @@ public interface ICartDao extends JpaRepository<Cart, Integer>{
 
 	@Query(value = "from Cart cart where customer.customer_id=?1")
 	public Cart getCartByCustomer(int customer_id);
-		
-	
 
 }

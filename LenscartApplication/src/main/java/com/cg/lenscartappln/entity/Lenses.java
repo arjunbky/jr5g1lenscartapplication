@@ -50,7 +50,7 @@ public class Lenses {
 	@Column(name="lens_price")
 	private double lens_price;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="cart_id")
 	@JsonBackReference
 	private Cart cart;

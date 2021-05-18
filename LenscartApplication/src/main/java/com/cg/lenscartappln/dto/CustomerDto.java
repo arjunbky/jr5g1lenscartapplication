@@ -17,6 +17,7 @@ public class CustomerDto {
 	private String state;
 	private int pincode;
 	private String message;
+	private String role;
 	
 	
 	public int getCustomer_id() {
@@ -98,6 +99,12 @@ public class CustomerDto {
 	}
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	

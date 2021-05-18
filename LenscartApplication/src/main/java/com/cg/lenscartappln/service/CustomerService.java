@@ -47,7 +47,8 @@ public class CustomerService implements ICustomerService {
 			customer.setLast_name(customerdto.getLast_name());
 			customer.setEmail_id(customerdto.getEmail_id());
 			customer.setPassword(customerdto.getPassword());
-
+            customer.setPhone_number(customerdto.getPhone_number());
+            customer.setRole(customerdto.getRole());
 
 			customer.setAddress(address);
 			addressDao.save(address);

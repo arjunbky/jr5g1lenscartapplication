@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +39,8 @@ public class LensesController {
 		return new ResponseEntity<List<Lenses>>(lensesList,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/deletelenses")
-	public ResponseEntity<String> deleteLenses(@RequestParam int lens_id) throws LensesNotFoundException{
+	@DeleteMapping("/deletelenses/{lens_id}")
+	public ResponseEntity<String> deleteLenses(@PathVariable("lens_id") int lens_id) throws LensesNotFoundException{
 		String str=service.deleteLenses(lens_id);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
