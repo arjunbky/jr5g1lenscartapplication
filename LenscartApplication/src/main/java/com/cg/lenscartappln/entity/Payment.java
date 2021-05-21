@@ -19,47 +19,36 @@ public class Payment implements Serializable {
 		private static final long serialVersionUID = 1L;
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		private int payment_id;
-		@Column(name="card_name",length=30)
-		private String card_name;
+		private int paymentId;
+		@Column(name="cardName",length=30)
+		private String cardName;
 		@Column(name="cvv",length=3)
 		private int cvv;
-		@Column(name="expiry_date")
-		private Date expiry_date;
-		@Column(name="card_number",length=16)
-		private long card_number;
+		@Column(name="expiryDate")
+		private Date expiryDate;
+		@Column(name="cardNumber",length=16)
+		private long cardNumber;
 		
 		@OneToOne(fetch = FetchType.EAGER)
-		@JoinColumn(name = "order_id")
+		@JoinColumn(name = "orderId")
 		private Orders orders;
 		
-		@Column(name="payment_status")
-		private boolean payment_status;
+		@Column(name="paymentStatus")
+		private boolean paymentStatus;
 		public Payment() {
 			
 		}
-		
-		public Payment(int payment_id, String card_name, int cvv, Date expiry_date, long card_number,Orders orders,boolean payment_status) {
-			super();
-			this.payment_id = payment_id;
-			this.card_name = card_name;
-			this.cvv = cvv;
-			this.expiry_date = expiry_date;
-			this.card_number = card_number;
-			this.orders=orders;
-			this.payment_status= payment_status;
-		}		
-		public int getPayment_id() {
-			return payment_id;
+		public int getPaymentId() {
+			return paymentId;
 		}
-		public void setPayment_id(int payment_id) {
-			this.payment_id = payment_id;
+		public void setPaymentId(int paymentId) {
+			this.paymentId = paymentId;
 		}
-		public String getCard_name() {
-			return card_name;
+		public String getCardName() {
+			return cardName;
 		}
-		public void setCard_name(String card_name) {
-			this.card_name = card_name;
+		public void setCardName(String cardName) {
+			this.cardName = cardName;
 		}
 		public int getCvv() {
 			return cvv;
@@ -67,17 +56,17 @@ public class Payment implements Serializable {
 		public void setCvv(int cvv) {
 			this.cvv = cvv;
 		}
-		public Date getExpiry_date() {
-			return expiry_date;
+		public Date getExpiryDate() {
+			return expiryDate;
 		}
-		public void setExpiry_date(Date expiry_date) {
-			this.expiry_date = expiry_date;
+		public void setExpiryDate(Date expiryDate) {
+			this.expiryDate = expiryDate;
 		}
-		public long getCard_number() {
-			return card_number;
+		public long getCardNumber() {
+			return cardNumber;
 		}
-		public void setCard_number(long card_number) {
-			this.card_number = card_number;
+		public void setCardNumber(long cardNumber) {
+			this.cardNumber = cardNumber;
 		}
 		public Orders getOrders() {
 			return orders;
@@ -85,11 +74,11 @@ public class Payment implements Serializable {
 		public void setOrders(Orders orders) {
 			this.orders = orders;
 		}
-		public boolean isPayment_status() {
-			return payment_status;
+		public boolean isPaymentStatus() {
+			return paymentStatus;
 		}
-		public void setPayment_status(boolean payment_status) {
-			this.payment_status = payment_status;
+		public void setPaymentStatus(boolean paymentStatus) {
+			this.paymentStatus = paymentStatus;
 		}
 		
 	

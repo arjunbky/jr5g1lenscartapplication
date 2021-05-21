@@ -12,7 +12,7 @@ import com.cg.lenscartappln.utils.CartNotFoundException;
 
 public interface ICartService {
 	
-	public String deleteCart(int cart_id) throws CartNotFoundException ;
+	public String deleteCart(int cartId) throws CartNotFoundException ;
 	public void addCart(Cart cart)throws CartNotFoundException;
     public List<CartDto> getAllCarts()throws CartNotFoundException;
 

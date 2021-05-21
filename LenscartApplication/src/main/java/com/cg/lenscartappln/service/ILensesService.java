@@ -9,7 +9,7 @@ import com.cg.lenscartappln.utils.LensesNotFoundException;
 public interface ILensesService {
 	public void addLenses(LensesDto lensesDto) throws LensesNotFoundException;
 	public List<Lenses> getAllLenses() throws LensesNotFoundException;
-	public String deleteLenses(int lens_id) throws LensesNotFoundException;
-	public String modifyLenses(int lens_id,Lenses lens) throws LensesNotFoundException;
+	public String deleteLenses(int lensId) throws LensesNotFoundException;
+	public String modifyLenses(int lensId,Lenses lens) throws LensesNotFoundException;
 
 }

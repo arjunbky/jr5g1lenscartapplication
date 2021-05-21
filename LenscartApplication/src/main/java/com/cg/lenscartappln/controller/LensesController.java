@@ -39,14 +39,14 @@ public class LensesController {
 		return new ResponseEntity<List<Lenses>>(lensesList,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/deletelenses/{lens_id}")
-	public ResponseEntity<String> deleteLenses(@PathVariable("lens_id") int lens_id) throws LensesNotFoundException{
-		String str=service.deleteLenses(lens_id);
+	@DeleteMapping("/deletelenses/{lensId}")
+	public ResponseEntity<String> deleteLenses(@PathVariable("lensId") int lensId) throws LensesNotFoundException{
+		String str=service.deleteLenses(lensId);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatelenses/{code}")
-	public ResponseEntity<String> modifyLenses(@RequestParam int lens_id,@RequestBody Lenses lens ) throws LensesNotFoundException{
-		String str=service.modifyLenses(lens_id, lens);
+	public ResponseEntity<String> modifyLenses(@RequestParam int lensId,@RequestBody Lenses lens ) throws LensesNotFoundException{
+		String str=service.modifyLenses(lensId, lens);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 }

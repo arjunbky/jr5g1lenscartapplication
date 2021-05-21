@@ -41,14 +41,14 @@ public class FramesController {
 			return new ResponseEntity<List<Frames>>(framesList,HttpStatus.OK);
 		}
 		
-		@DeleteMapping("/deleteframes/{frame_id}")
-		public ResponseEntity<String> deleteFrames(@PathVariable("frame_id") int frame_id) throws FrameNotFoundException{
+		@DeleteMapping("/deleteframes/{frameId}")
+		public ResponseEntity<String> deleteFrames(@PathVariable("frameId") int frame_id) throws FrameNotFoundException{
 			service.deleteFrames(frame_id);
 			return new ResponseEntity<String>("frame deleted",HttpStatus.OK);
 		}
 		@PutMapping("/updateframes/{code}")
-		public ResponseEntity<String> modifyFrames(@RequestParam int frame_id,@RequestBody Frames frames) throws FrameNotFoundException{
-			String str=service.modifyFrames(frame_id, frames);
+		public ResponseEntity<String> modifyFrames(@RequestParam int frameId,@RequestBody Frames frames) throws FrameNotFoundException{
+			String str=service.modifyFrames(frameId, frames);
 			return new ResponseEntity<String>(str,HttpStatus.OK);
 		}
 	}

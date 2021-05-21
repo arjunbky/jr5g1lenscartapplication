@@ -2,6 +2,7 @@ package com.cg.lenscartappln.service;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +14,7 @@ import com.cg.lenscartappln.dao.IFramesDao;
 import com.cg.lenscartappln.dao.ILensesDao;
 import com.cg.lenscartappln.dto.CartDto;
 import com.cg.lenscartappln.entity.Cart;
-import com.cg.lenscartappln.entity.Frames;
 import com.cg.lenscartappln.utils.CartNotFoundException;
-import com.cg.lenscartappln.utils.FrameNotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -36,8 +35,6 @@ public class CartService implements ICartService {
 //**method to add the frames and lenses by their ID to the cart**
 		public void addCart(Cart cart) {	
 				cartDao.save(cart);
-		
-			
 		}
   
 //**method to get all the items present in the cart**
@@ -71,32 +68,29 @@ public class CartService implements ICartService {
 				cartDto.setTotalLenses(lenseCount);
 				cartDto.setQuantity(frameCount+lenseCount);
 				cartDtoList.add(cartDto);
-			
 			}
-		
 		return cartDtoList;
 	}
 	
 	public Optional<Cart> getCartById(int cart_id) throws CartNotFoundException{
 		List<Cart> cartList=cartDao.findAll();
 		 for(Cart carts:cartList) {
-			 if(carts.getCart_id()==cart_id) {
+			 if(carts.getCartId()==cart_id) {
 				 Optional<Cart> cartlist=cartDao.findById(cart_id);
 				 return cartlist;
-			 }
-			 
+			 } 
 		 }
 		 throw new CartNotFoundException();
-	
 	}
 	
 //** method to delete the items present in  the cart**
 	public String deleteCart(int cart_id) throws CartNotFoundException {
-			
+		
 			 List<Cart> cartList=cartDao.findAll();
-			
 			 for(Cart carts:cartList) {
-				 if(carts.getCart_id()==cart_id) {
+				 if(carts.getCartId()==cart_id) {
+					 carts.setFrames(Collections.emptyList());
+					 carts.setLenses(Collections.emptyList());
 					 cartDao.deleteById(cart_id);
 					 return "cart deleted";
 			}

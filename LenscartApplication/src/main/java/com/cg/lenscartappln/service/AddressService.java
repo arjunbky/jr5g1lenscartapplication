@@ -17,10 +17,10 @@ public class AddressService {
 	public void addAddress(CustomerDto customerdto) {
 //		addressDao.save(address);
 		Address address=new Address();
-		address.setHouse_number(customerdto.getHouse_number());
+		address.setHouseNumber(customerdto.getHouseNumber());
 		address.setCity(customerdto.getCity());
 		address.setState(customerdto.getState());
-		address.setStreet_name(customerdto.getStreet_name());
+		address.setStreetName(customerdto.getStreetName());
 		address.setPincode(customerdto.getPincode());
 		addressDao.save(address);
 		}
@@ -29,9 +29,9 @@ public class AddressService {
 		List<Address>addressList=addressDao.findAll();
 		return addressList;
 	}
-	public String deleteAddress(int address_id) {
-		if(addressDao.existsById(address_id)) {
-			addressDao.deleteById(address_id);
+	public String deleteAddress(int addressId) {
+		if(addressDao.existsById(addressId)) {
+			addressDao.deleteById(addressId);
 			return "address Deleted";
 		}
 		else

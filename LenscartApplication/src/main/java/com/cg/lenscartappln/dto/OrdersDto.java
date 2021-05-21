@@ -6,41 +6,38 @@ import com.cg.lenscartappln.entity.Cart;
 import com.cg.lenscartappln.entity.Customer;
 
 public class OrdersDto {
-	private int order_id;
-	private double total_cost;
-	private Date date_of_order;
-	private Date expected_date_of_arrival;
+	private int orderId;
+	private double totalCost;
+	private Date dateOfOrder;
+	private Date expectedDateOfArrival;
 	
 	private Cart cart;
 	private Customer customer;
 	
-	public int getOrder_id() {
-		return order_id;
+	public int getOrderId() {
+		return orderId;
 	}
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
-	public double getTotal_cost() {
-		return total_cost;
+	public double getTotalCost() {
+		return totalCost;
 	}
-	public void setTotal_cost(double total_cost) {
-		this.total_cost = total_cost;
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
 	}
-	public Date getDate_of_order() {
-		return date_of_order;
+	public Date getDateOfOrder() {
+		return dateOfOrder;
 	}
-	public void setDate_of_order(Date date_of_order) {
-		this.date_of_order = date_of_order;
+	public void setDateOfOrder(Date dateOfOrder) {
+		this.dateOfOrder = dateOfOrder;
 	}
-	public Date getExpected_date_of_arrival() {
-		return expected_date_of_arrival;
+	public Date getExpectedDateOfArrival() {
+		return expectedDateOfArrival;
 	}
-	public void setExpected_date_of_arrival(Date expected_date_of_arrival) {
-		this.expected_date_of_arrival = expected_date_of_arrival;
+	public void setExpectedDateOfArrival(Date expectedDateOfArrival) {
+		this.expectedDateOfArrival = expectedDateOfArrival;
 	}
-
-	
-	
 	public Cart getCart() {
 		return cart;
 	}

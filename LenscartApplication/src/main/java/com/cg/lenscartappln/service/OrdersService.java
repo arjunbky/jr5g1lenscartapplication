@@ -26,12 +26,12 @@ public class OrdersService implements IOrdersService {
 //	** method to add the order details to Orders table **
 	public void addOrders(OrdersDto ordersDto) {
 		Orders order=new Orders();
-		order.setOrder_id(ordersDto.getOrder_id());
-		order.setDate_of_order(ordersDto.getDate_of_order());
-		order.setExpected_date_of_arrival(ordersDto.getExpected_date_of_arrival());
-		order.setCart(ordersDto.getCart());;
+		order.setOrderId(ordersDto.getOrderId());
+		order.setDateOfOrder(ordersDto.getDateOfOrder());
+		order.setExpectedDateOfArrival(ordersDto.getExpectedDateOfArrival());
+		order.setCart(ordersDto.getCart());
 		order.setCustomer(ordersDto.getCustomer());
-		order.setTotal_cost(ordersDto.getTotal_cost());
+		order.setTotalCost(ordersDto.getTotalCost());
 		ordersDao.save(order);
 		
 	}
@@ -43,14 +43,14 @@ public class OrdersService implements IOrdersService {
 	}
 	
 //	**method to update the existing order in the table**
-	public String modifyOrder(int order_id, Orders orders) throws OrdersNotFoundException {
-		if(ordersDao.existsById(order_id)) {
-			Orders order=ordersDao.findById(order_id).get();
-			order.setDate_of_order(orders.getDate_of_order());
+	public String modifyOrder(int orderId, Orders orders) throws OrdersNotFoundException {
+		if(ordersDao.existsById(orderId)) {
+			Orders order=ordersDao.findById(orderId).get();
+			order.setDateOfOrder(orders.getDateOfOrder());
 			order.setCustomer(orders.getCustomer());
-			order.setExpected_date_of_arrival(orders.getExpected_date_of_arrival());
+			order.setExpectedDateOfArrival(orders.getExpectedDateOfArrival());
 			order.setCart(orders.getCart());
-			order.setTotal_cost(orders.getTotal_cost());
+			order.setTotalCost(orders.getTotalCost());
 			ordersDao.save(orders);
 		return "order updated";
 	}
@@ -59,11 +59,11 @@ public class OrdersService implements IOrdersService {
 	}
 	
 //	*method to delete the order based on order_id**
-	public String deleteOrder(int order_id) throws OrdersNotFoundException {
+	public String deleteOrder(int orderId) throws OrdersNotFoundException {
 		List<Orders> ordersList=ordersDao.findAll();
 		for(Orders order:ordersList) {
-		if(order.getOrder_id()==order_id) {
-			ordersDao.deleteById(order_id);
+		if(order.getOrderId()==orderId) {
+			ordersDao.deleteById(orderId);
 			return "order deleted";
 		}
 		}

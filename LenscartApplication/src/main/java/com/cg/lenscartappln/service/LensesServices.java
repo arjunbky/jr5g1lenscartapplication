@@ -25,7 +25,7 @@ public class LensesServices implements ILensesService{
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		lens=mapper.convertValue(lensesdto, Lenses.class);
 		Cart cart=new Cart();
-		cart.setCart_id(1);
+		cart.setCartId(1);
 		lens.setCart(cart);
 		lensesDao.save(lens);
 	}
@@ -37,9 +37,9 @@ public class LensesServices implements ILensesService{
 	}
 //** method to delete lenses based on their ID**
 	@Override
-	public String deleteLenses(int lens_id) throws LensesNotFoundException {
-		if(lensesDao.existsById(lens_id)) {
-			lensesDao.deleteById(lens_id);
+	public String deleteLenses(int lensId) throws LensesNotFoundException {
+		if(lensesDao.existsById(lensId)) {
+			lensesDao.deleteById(lensId);
 			return "Lens removed";
 		}
 		else 
@@ -47,12 +47,12 @@ public class LensesServices implements ILensesService{
 	}
 //** method to update the lenses based on their ID**
 	@Override
-	public String modifyLenses(int lens_id, Lenses lens) throws LensesNotFoundException {
-		if(lensesDao.existsById(lens_id)) {
-			Lenses lenses =lensesDao.findById(lens_id).get();
-			lenses.setLens_power(lens.getLens_power());
-			lenses.setLens_brand(lens.getLens_brand());
-			lenses.setLens_type(lens.getLens_type());
+	public String modifyLenses(int lensId, Lenses lens) throws LensesNotFoundException {
+		if(lensesDao.existsById(lensId)) {
+			Lenses lenses =lensesDao.findById(lensId).get();
+			lenses.setLensPower(lens.getLensPower());
+			lenses.setLensBrand(lens.getLensBrand());
+			lenses.setLensType(lens.getLensType());
 			lensesDao.save(lens);
 			return "Lenses updated";
 		}

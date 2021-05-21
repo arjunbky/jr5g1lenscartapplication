@@ -36,19 +36,19 @@ public class CartController {
 		return new ResponseEntity<List<CartDto>>(cartList,HttpStatus.OK);
 	}
 	@GetMapping("/byid")
-	public ResponseEntity<Optional<Cart>> getCartById(@RequestParam int cart_id) throws CartNotFoundException{
-		Optional<Cart> cart =cartService.getCartById(cart_id);
+	public ResponseEntity<Optional<Cart>> getCartById(@RequestParam int cartId) throws CartNotFoundException{
+		Optional<Cart> cart =cartService.getCartById(cartId);
 		return new ResponseEntity<Optional<Cart>>(cart,HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/deletecart")
-	public ResponseEntity<String> deleteCart(@RequestParam int cart_id) throws CartNotFoundException{
-		cartService.deleteCart(cart_id);
+	public ResponseEntity<String> deleteCart(@RequestParam int cartId) throws CartNotFoundException{
+		cartService.deleteCart(cartId);
 		return new ResponseEntity<String>("Cart deleted",HttpStatus.OK);
 	}
 	@GetMapping("/bycustid")
-	public ResponseEntity<Cart> getCartByCustomer(@RequestParam int customer_id){
-		Cart cartItem=cartService.getCartByCustomer(customer_id);
+	public ResponseEntity<Cart> getCartByCustomer(@RequestParam int customerId){
+		Cart cartItem=cartService.getCartByCustomer(customerId);
 		return new ResponseEntity<Cart>(cartItem,HttpStatus.OK);
 	}
 	

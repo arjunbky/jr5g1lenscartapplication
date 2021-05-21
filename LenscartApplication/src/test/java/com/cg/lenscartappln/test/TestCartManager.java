@@ -31,31 +31,31 @@ public class TestCartManager {
 	public void testaddCart() {
 		List<Frames> framesList=new ArrayList<Frames>();
 		Frames frames=new Frames();
-		frames.setFrame_id(1);
-		frames.setFrame_shape("circle");
-		frames.setFrame_brand("TH");
-		frames.setFrame_price(3564.66);
+		frames.setFrameId(1);
+		frames.setFrameShape("circle");
+		frames.setFrameBrand("TH");
+		frames.setFramePrice(3564.66);
 		frames.setCart(null);
 	    framesList.add(frames);
 	    
 	    List<Lenses> lensesList=new ArrayList<Lenses>();
 		Lenses lenses=new Lenses();
-		lenses.setLens_id(1);
-		lenses.setLens_power(1.56f);
-		lenses.setLens_price(600.22);
-		lenses.setLens_type("progressive");
+		lenses.setLensId(1);
+		lenses.setLensPower(1.56f);
+		lenses.setLensPrice(600.22);
+		lenses.setLensType("progressive");
 		lenses.setCart(null);
 		 lensesList.add(lenses);
 		 
 		 Cart cart=new Cart();
-		 cart.setCart_id(1);
+		 cart.setCartId(1);
 		 cart.setFrames(framesList);
 		 cart.setLenses(lensesList);
 
 		 
 		 cartDao.save(cart);
 		 
-		 Assert.assertNotNull(cart.getCart_id());
+		 Assert.assertNotNull(cart.getCartId());
 		 Mockito.verify(cartDao,Mockito.times(1)).save(cart);
 		 
 		
@@ -66,25 +66,24 @@ public class TestCartManager {
 		List<Cart> cartList=new ArrayList<>();
 		List<Frames> framesList=new ArrayList<Frames>();
 		Frames frames=new Frames();
-		frames.setFrame_id(1);
-		frames.setFrame_shape("circle");
-		frames.setFrame_brand("TH");
-		frames.setFrame_price(3564.66);
+		frames.setFrameId(1);
+		frames.setFrameShape("circle");
+		frames.setFrameBrand("TH");
+		frames.setFramePrice(3564.66);
 		frames.setCart(null);
 	    framesList.add(frames);
 	    
 	    List<Lenses> lensesList=new ArrayList<Lenses>();
 		Lenses lenses=new Lenses();
-		lenses.setLens_id(1);
-		lenses.setLens_power(1.56f);
-		lenses.setLens_price(600.22);
-		lenses.setLens_type("progressive");
+		lenses.setLensId(1);
+		lenses.setLensPower(1.56f);
+		lenses.setLensPrice(600.22);
+		lenses.setLensType("progressive");
 		lenses.setCart(null);
 		 lensesList.add(lenses);
 		 
 		
-		 cartList.add(new Cart(1,23,456.32,framesList,lensesList));
-		cartList.add(new Cart(2,23,456.32,framesList,lensesList));
+		 
 		
 		Mockito.when(cartDao.findAll()).thenReturn(cartList);
 		 List<CartDto> list=cartService.getAllCarts();

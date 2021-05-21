@@ -20,38 +20,25 @@ public class Lenses {
 	
 }
 	
-	
-
-	public Lenses(int lens_id, float lens_power, String lens_brand, String lens_type, double lens_price, Cart cart) {
-		this.lens_id = lens_id;
-		this.lens_power = lens_power;
-		this.lens_brand = lens_brand;
-		this.lens_type = lens_type;
-		this.lens_price = lens_price;
-		this.cart = cart;
-	}
-
-
-
 	@Id
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int lens_id;
+	private int lensId;
 	
-	@Column(name="lens_power",length=30,nullable=false)
-	private float lens_power;
+	@Column(name="lensPower",length=30,nullable=false)
+	private float lensPower;
 	
-	@Column(name="lens_brand",length=50)
-	private String lens_brand;
+	@Column(name="lensBrand",length=50)
+	private String lensBrand;
 	
-	@Column(name="lens_type",length=100)
-	private String lens_type;
+	@Column(name="lensType",length=100)
+	private String lensType;
 	
-	@Column(name="lens_price")
-	private double lens_price;
+	@Column(name="lensPrice")
+	private double lensPrice;
 	
 	@ManyToOne
-	@JoinColumn(name="cart_id")
+	@JoinColumn(name="cartId")
 	@JsonBackReference
 	private Cart cart;
 
@@ -61,45 +48,36 @@ public class Lenses {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	public int getLens_id() {
-		return lens_id;
+	public int getLensId() {
+		return lensId;
+	}
+	public void setLensId(int lensId) {
+		this.lensId = lensId;
+	}
+	public float getLensPower() {
+		return lensPower;
+	}
+	public void setLensPower(float lensPower) {
+		this.lensPower = lensPower;
+	}
+	public String getLensBrand() {
+		return lensBrand;
+	}
+	public void setLensBrand(String lensBrand) {
+		this.lensBrand = lensBrand;
+	}
+	public String getLensType() {
+		return lensType;
+	}
+	public void setLensType(String lensType) {
+		this.lensType = lensType;
+	}
+	public double getLensPrice() {
+		return lensPrice;
+	}
+	public void setLensPrice(double lensPrice) {
+		this.lensPrice = lensPrice;
 	}
 
-	public void setLens_id(int lens_id) {
-		this.lens_id = lens_id;
-	}
-
-	public float getLens_power() {
-		return lens_power;
-	}
-
-	public void setLens_power(float lens_power) {
-		this.lens_power = lens_power;
-	}
-
-	public String getLens_brand() {
-		return lens_brand;
-	}
-
-	public void setLens_brand(String lens_brand) {
-		this.lens_brand = lens_brand;
-	}
-
-	public String getLens_type() {
-		return lens_type;
-	}
-
-	public void setLens_type(String lens_type) {
-		this.lens_type = lens_type;
-	}
-
-	public double getLens_price() {
-		return lens_price;
-	}
-
-	public void setLens_price(double lens_price) {
-		this.lens_price = lens_price;
-	}
-	
 
 }

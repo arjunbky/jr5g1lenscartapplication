@@ -37,8 +37,8 @@ public ResponseEntity<List<Address>> getAllAddress(){
 	return new ResponseEntity<List<Address>>(addressList,HttpStatus.OK);
 }
 @DeleteMapping("/deleteaddress")
-public ResponseEntity<String> deleteFrames(@RequestParam int address_id) {
-	addressService.deleteAddress(address_id);
+public ResponseEntity<String> deleteFrames(@RequestParam int addressId) {
+	addressService.deleteAddress(addressId);
 	return new ResponseEntity<String>("address deleted",HttpStatus.OK);
 }
 

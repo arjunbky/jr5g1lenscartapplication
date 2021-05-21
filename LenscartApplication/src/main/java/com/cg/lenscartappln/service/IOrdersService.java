@@ -9,6 +9,6 @@ import com.cg.lenscartappln.utils.OrdersNotFoundException;
 public interface IOrdersService {
 	public void addOrders(OrdersDto ordersDto) throws OrdersNotFoundException;
 	public List<Orders> getAllOrders() throws OrdersNotFoundException;
-	public String modifyOrder(int order_id, Orders orders) throws OrdersNotFoundException;
-	public String deleteOrder(int order_id) throws OrdersNotFoundException;
+	public String modifyOrder(int orderId, Orders orders) throws OrdersNotFoundException;
+	public String deleteOrder(int orderId) throws OrdersNotFoundException;
 }

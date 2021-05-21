@@ -9,6 +9,6 @@ import com.cg.lenscartappln.utils.FrameNotFoundException;
 public interface IFramesService {
 	public void addFrames(FramesDto framesDto) throws FrameNotFoundException;
 	public List<Frames> getAllFrames() throws FrameNotFoundException;
-	public String deleteFrames(int frame_id) throws FrameNotFoundException;
-	public String modifyFrames(int frame_id,Frames frames) throws FrameNotFoundException;
+	public String deleteFrames(int frameId) throws FrameNotFoundException;
+	public String modifyFrames(int frameId,Frames frames) throws FrameNotFoundException;
 	}

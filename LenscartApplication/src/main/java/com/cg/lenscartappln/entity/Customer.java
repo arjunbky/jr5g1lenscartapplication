@@ -19,100 +19,70 @@ public class Customer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int customer_id;
+	private int customerId;
 	
 	@Column(length = 15)
-	private String first_name;
+	private String firstName;
 	
 	@Column(length = 15)
-	private String last_name;
+	private String lastName;
 	
 	@Column(length = 10)
-	private long phone_number;
+	private long phoneNumber;
 	
 	@Column(length = 30)
-	private String email_id;
+	private String emailId;
 	
 	@Column(length = 20)
 	private String password;
+	
+	private String Role;
+	private String message;
 //	one to one mapping for customer and address
 //	only unidirectional
 	
 	@OneToOne(targetEntity = Address.class)
-    @JoinColumn(name = "address_id",unique = true)
+    @JoinColumn(name = "addressId",unique = true)
     private Address address;
-	
-	
-	
 
-	public Address getAddress() {
-		return address;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
-	private String message;
-	 
-	private String role;
-
-
-	public String getRole() {
-		return role;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-
-	public int getCustomer_id() {
-		return customer_id;
+	public long getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-
-	public long getPhone_number() {
-		return phone_number;
-	}
-
-	public void setPhone_number(long phone_number) {
-		this.phone_number = phone_number;
-	}
-
-	public String getEmail_id() {
-		return email_id;
-	}
-
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getPassword() {
@@ -123,6 +93,32 @@ public class Customer implements Serializable {
 		this.password = password;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getRole() {
+		return Role;
+	}
+
+	public void setRole(String role) {
+		Role = role;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	
+	
 	
 
 	

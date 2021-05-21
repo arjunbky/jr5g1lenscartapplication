@@ -18,93 +18,88 @@ public class Orders implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int order_id;
+	private int orderId;
 	
-	@Column(name="total_cost")
-	private double total_cost;
+	@Column(name="totalCost")
+	private double totalCost;
 
-	@Column(name="date_of_order")
-	private Date date_of_order;
+	@Column(name="dateOfOrder")
+	private Date dateOfOrder;
 	
-	@Column(name="expected_date_of_arrival")
-	private Date expected_date_of_arrival;
+	@Column(name="expectedOateOfArrival")
+	private Date expectedDateOfArrival;
 	
 	@OneToOne(targetEntity = Cart.class)
-	@JoinColumn(name = "cart_id")
+	@JoinColumn(name = "cartId")
 	private Cart cart;
 	
 	
 	@OneToOne(targetEntity = Customer.class)
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "customerId")
 	private Customer customer;
-	
-	
-	
 
-	public double getTotal_cost() {
-		return total_cost;
+
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setTotal_cost(double total_cost) {
-		this.total_cost = total_cost;
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
-	public Date getDate_of_order() {
-		return date_of_order;
+
+	public double getTotalCost() {
+		return totalCost;
 	}
 
-	public void setDate_of_order(Date date_of_order) {
-		this.date_of_order = date_of_order;
+
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
 	}
 
-	public Date getExpected_date_of_arrival() {
-		return expected_date_of_arrival;
+
+	public Date getDateOfOrder() {
+		return dateOfOrder;
 	}
 
-	public void setExpected_date_of_arrival(Date expected_date_of_arrival) {
-		this.expected_date_of_arrival = expected_date_of_arrival;
+
+	public void setDateOfOrder(Date dateOfOrder) {
+		this.dateOfOrder = dateOfOrder;
 	}
+
+
+	public Date getExpectedDateOfArrival() {
+		return expectedDateOfArrival;
+	}
+
+
+	public void setExpectedDateOfArrival(Date expectedDateOfArrival) {
+		this.expectedDateOfArrival = expectedDateOfArrival;
+	}
+
 
 	public Cart getCart() {
 		return cart;
 	}
 
+
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
 
-	public Customer getCustomer(int customer_id) {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public Orders() {
-		
-	}
-
-	public int getOrder_id() {
-		return order_id;
-	}
-
-	public void setOrder_id(int order_id) {
-		this.order_id = order_id;
-	}
 
 	public Customer getCustomer() {
 		return customer;
 	}
 
-	public Orders(int order_id, double total_cost,Date date_of_order, Date expected_date_of_arrival, Cart cart,Customer customer) {
-		this.order_id = order_id;
-		this.total_cost = total_cost;
-		this.date_of_order = date_of_order;
-		this.expected_date_of_arrival = expected_date_of_arrival;
-		this.cart=cart;
-		this.customer=customer;
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+	
+	
+	
 
 	
 

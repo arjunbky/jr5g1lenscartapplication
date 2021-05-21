@@ -36,16 +36,15 @@ public class CustomerController {
 	
 	@PostMapping("/validate")
 	public ResponseEntity<Customer> validate(@RequestBody Customer customer){
-		Customer log=customerService.validate(customer.getEmail_id(),customer.getPassword());
+		Customer log=customerService.validate(customer.getEmailId(),customer.getPassword());
 		Cart cart=new Cart();
-		cart.setCart_id(1);
+		cart.setCartId(1);
 		cartService.addCart(cart);
 		return new ResponseEntity<Customer>(log,HttpStatus.OK);
 	}
-	
 	@PostMapping
-	public ResponseEntity<String> addCustomer(@RequestBody CustomerDto customerdto){
-		customerService.addCustomer(customerdto);
+	public ResponseEntity<String> addCustomer(@RequestBody CustomerDto customerDto){
+		customerService.addCustomer(customerDto);
 		return new ResponseEntity<String>("Customer Added",HttpStatus.OK);
 	}
 	@GetMapping
@@ -53,15 +52,14 @@ public class CustomerController {
 		List<Customer> customerList=customerService.getAllCustomer();
 		return new ResponseEntity<List<Customer>>(customerList,HttpStatus.OK);
 	}
-	
 	@DeleteMapping("/deletecustomer")
-	public ResponseEntity<String> deleteCustomer(@RequestParam int customer_id) throws CustomerNotFoundException{
-		String str=customerService.deleteCustomer(customer_id);
+	public ResponseEntity<String> deleteCustomer(@RequestParam int customerId) throws CustomerNotFoundException{
+		String str=customerService.deleteCustomer(customerId);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updatecust")
-	public ResponseEntity<String> modifyCustomer(@RequestParam int customer_id,@RequestBody Customer cust) throws CustomerNotFoundException{
-		String str=customerService.modifyCustomer(customer_id, cust);
+	public ResponseEntity<String> modifyCustomer(@RequestParam int customerId,@RequestBody Customer cust) throws CustomerNotFoundException{
+		String str=customerService.modifyCustomer(customerId, cust);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 }

@@ -19,8 +19,8 @@ public class CustomerService implements ICustomerService {
 	@Autowired
 	IAddressDao addressDao;
 	
-	public Customer validate(String email_id,String password) {
-		Customer customer =customerDao.validate(email_id,password);
+	public Customer validate(String emailId,String password) {
+		Customer customer =customerDao.validate(emailId,password);
 		if(customer ==null) {
 			customer=new Customer();
 			customer.setMessage("Invalid email");
@@ -33,21 +33,21 @@ public class CustomerService implements ICustomerService {
 
 		Customer customer=new Customer();
 		Address address=new Address();
-    	address.setAddress_id(customerdto.getAddress_id());
-		address.setHouse_number(customerdto.getHouse_number());
+    	address.setAddressId(customerdto.getAddressId());
+		address.setHouseNumber(customerdto.getHouseNumber());
 		address.setCity(customerdto.getCity());
-		address.setStreet_name(customerdto.getStreet_name());
+		address.setStreetName(customerdto.getStreetName());
 		address.setState(customerdto.getState());
 		address.setPincode(customerdto.getPincode());
 	 
-		if(addressDao.findById(address.getAddress_id()).isEmpty()) {
+		if(addressDao.findById(address.getAddressId()).isEmpty()) {
 			
 
-			customer.setFirst_name(customerdto.getFirst_name());
-			customer.setLast_name(customerdto.getLast_name());
-			customer.setEmail_id(customerdto.getEmail_id());
+			customer.setFirstName(customerdto.getFirstName());
+			customer.setLastName(customerdto.getLastName());
+			customer.setEmailId(customerdto.getEmailId());
 			customer.setPassword(customerdto.getPassword());
-            customer.setPhone_number(customerdto.getPhone_number());
+            customer.setPhoneNumber(customerdto.getPhoneNumber());
             customer.setRole(customerdto.getRole());
 
 			customer.setAddress(address);
@@ -67,22 +67,22 @@ public class CustomerService implements ICustomerService {
 		return custList;
 	}
 //** method to delete the customer based on customer_id**
-	public String deleteCustomer(int customer_id) throws CustomerNotFoundException {
-		if(customerDao.existsById(customer_id)) {
-			customerDao.deleteById(customer_id);
+	public String deleteCustomer(int customerId) throws CustomerNotFoundException {
+		if(customerDao.existsById(customerId)) {
+			customerDao.deleteById(customerId);
 			return "Customer Deleted";
 		}
 		else
 			throw new CustomerNotFoundException();
 	}
 //**method to update the existing customer details in the table**
-	public String modifyCustomer(int customer_id,Customer cust) throws CustomerNotFoundException {
-		if(customerDao.existsById(customer_id)) {
-			Customer customer=customerDao.findById(customer_id).get();
-			customer.setFirst_name(cust.getFirst_name());
-			customer.setLast_name(cust.getLast_name());
-			customer.setPhone_number(cust.getPhone_number());
-			customer.setEmail_id(cust.getEmail_id());
+	public String modifyCustomer(int customerId,Customer cust) throws CustomerNotFoundException {
+		if(customerDao.existsById(customerId)) {
+			Customer customer=customerDao.findById(customerId).get();
+			customer.setFirstName(cust.getFirstName());
+			customer.setLastName(cust.getLastName());
+			customer.setPhoneNumber(cust.getPhoneNumber());
+			customer.setEmailId(cust.getEmailId());
 			customer.setPassword(cust.getPassword());
 			
 			

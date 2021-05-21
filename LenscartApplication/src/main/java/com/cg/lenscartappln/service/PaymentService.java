@@ -21,11 +21,11 @@ public class PaymentService implements IPaymentService {
 //** method to add payment details**
 	public void addPayment(PaymentDto paymentDto) {
 		Payment payment =new Payment();
-		payment.setPayment_id(paymentDto.getPayment_id());
-		payment.setCard_name(paymentDto.getCard_name());
-        payment.setCard_number(paymentDto.getCard_number());
+		payment.setPaymentId(paymentDto.getPaymentId());
+		payment.setCardName(paymentDto.getCardName());
+        payment.setCardNumber(paymentDto.getCardNumber());
         payment.setCvv(paymentDto.getCvv());
-        payment.setExpiry_date(paymentDto.getExpiry_date());
+        payment.setExpiryDate(paymentDto.getExpiryDate());
         payment.setOrders(paymentDto.getOrder());
 		paymentDao.save(payment);  
 	}
@@ -37,11 +37,11 @@ public class PaymentService implements IPaymentService {
 	}
 	
 //** method to delete payment based on ID**
-	public String cancelAllPayment(int  payment_id) throws PaymentNotFoundException {
+	public String cancelAllPayment(int  paymentId) throws PaymentNotFoundException {
 		List<Payment> paymentList=paymentDao.findAll();
 		for(Payment payment:paymentList) {
-		if(payment.getPayment_id()==payment_id) {
-			paymentDao.deleteById(payment_id);
+		if(payment.getPaymentId()==paymentId) {
+			paymentDao.deleteById(paymentId);
 			return "payment cancelled";
 			}
 		}

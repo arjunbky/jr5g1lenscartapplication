@@ -2,11 +2,11 @@ package com.cg.lenscartappln.dto;
 
 
 public class LensesDto {
-	private int lens_id;
-	private float lens_power;
-	private String lens_brand;
-	private String lens_type;
-	private double lens_price;
+	private int lensId;
+	private float lensPower;
+	private String lensBrand;
+	private String lensType;
+	private double lensPrice;
 	private CartDto cart;
 	
 	
@@ -16,36 +16,37 @@ public class LensesDto {
 	public void setCart(CartDto cart) {
 		this.cart = cart;
 	}
-	public int getLens_id() {
-		return lens_id;
+	public int getLensId() {
+		return lensId;
 	}
-	public void setLens_id(int lens_id) {
-		this.lens_id = lens_id;
+	public void setLensId(int lensId) {
+		this.lensId = lensId;
 	}
-	public float getLens_power() {
-		return lens_power;
+	public float getLensPower() {
+		return lensPower;
 	}
-	public void setLens_power(float lens_power) {
-		this.lens_power = lens_power;
+	public void setLensPower(float lensPower) {
+		this.lensPower = lensPower;
 	}
-	public String getLens_brand() {
-		return lens_brand;
+	public String getLensBrand() {
+		return lensBrand;
 	}
-	public void setLens_brand(String lens_brand) {
-		this.lens_brand = lens_brand;
+	public void setLensBrand(String lensBrand) {
+		this.lensBrand = lensBrand;
 	}
-	public String getLens_type() {
-		return lens_type;
+	public String getLensType() {
+		return lensType;
 	}
-	public void setLens_type(String lens_type) {
-		this.lens_type = lens_type;
+	public void setLensType(String lensType) {
+		this.lensType = lensType;
 	}
-	public double getLens_price() {
-		return lens_price;
+	public double getLensPrice() {
+		return lensPrice;
 	}
-	public void setLens_price(double lens_price) {
-		this.lens_price = lens_price;
+	public void setLensPrice(double lensPrice) {
+		this.lensPrice = lensPrice;
 	}
+
 
 	
 }

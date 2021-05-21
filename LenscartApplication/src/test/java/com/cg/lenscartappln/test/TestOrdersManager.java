@@ -33,27 +33,27 @@ public void testgetOrders() {
 	
 	
 	Cart cart=new Cart();
-	cart.setCart_id(1);
+//	cart.setCart_id(1);
 	cart.setFrames(null);
 	cart.setLenses(null);
 
 	
 
 	Address address = new Address();
-	address.setAddress_id(0);
-	address.setHouse_number("4-33a");
-	address.setStreet_name("mg road");
+//	address.setAddress_id(0);
+//	address.setHouse_number("4-33a");
+//	address.setStreet_name("mg road");
 	address.setCity("Udupi");
 	address.setState("Karnataka");
 	address.setPincode(576122);
 	
 	 
 	Customer customer = new Customer();
-	customer.setCustomer_id(2);
-	customer.setFirst_name("Roshni");
-	customer.setLast_name("Kumar");
-	customer.setPhone_number(355);
-	customer.setEmail_id("rosh@gmail.com");
+//	customer.setCustomer_id(2);
+//	customer.setFirst_name("Roshni");
+//	customer.setLast_name("Kumar");
+//	customer.setPhone_number(355);
+//	customer.setEmail_id("rosh@gmail.com");
 	customer.setPassword("abc");
 	customer.setAddress(address);
 	
@@ -62,7 +62,7 @@ public void testgetOrders() {
 	
 	List<Orders> ordersList=new ArrayList<>();
 	
-	ordersList.add(new Orders(2,345.3,dateOfOrder,dateOfArrival,cart,customer)); 
+//	ordersList.add(new Orders(2,345.3,dateOfOrder,dateOfArrival,cart,customer)); 
 	Mockito.when(orderDao.findAll()).thenReturn(ordersList);
 	List<Orders> list=orderService.getAllOrders();
 	Assertions.assertEquals(1,list.size());

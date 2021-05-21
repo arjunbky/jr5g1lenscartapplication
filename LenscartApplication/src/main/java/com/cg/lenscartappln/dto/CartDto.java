@@ -5,7 +5,7 @@ import java.util.List;
 import com.cg.lenscartappln.entity.Customer;
 
 public class CartDto {
-	private int cart_id;
+	private int cartId;
 	private int totalFrames;
 	private int totalLenses;
 	private int quantity;
@@ -16,11 +16,11 @@ public class CartDto {
 	
 	
 	
-	public int getCart_id() {
-		return cart_id;
+	public int getCartId() {
+		return cartId;
 	}
-	public void setCart_id(int cart_id) {
-		this.cart_id = cart_id;
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
 	}
 	public int getTotalFrames() {
 		return totalFrames;

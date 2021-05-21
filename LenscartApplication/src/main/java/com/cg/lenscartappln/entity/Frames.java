@@ -21,36 +21,27 @@ public Frames() {
 }
 
 
-	public Frames(int frame_id, String frame_shape, String frame_colour, String frame_brand, double frame_price,
-		Cart cart) {
-	this.frame_id = frame_id;
-	this.frame_shape = frame_shape;
-	this.frame_colour = frame_colour;
-	this.frame_brand = frame_brand;
-	this.frame_price = frame_price;
-	this.cart = cart;
-}
 
 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int frame_id;
+	private int frameId;
 	
-	@Column(name="frame_shape",length=50,nullable=false)
-	private String frame_shape;
+	@Column(name="frameShape",length=50,nullable=false)
+	private String frameShape;
 	
-	@Column(name="frame_colour",length=50)
-	private String frame_colour;
+	@Column(name="frameColour",length=50)
+	private String frameColour;
 	
-	@Column(name="frame_brand",length=50)
-	private String frame_brand;
+	@Column(name="frameBrand",length=50)
+	private String frameBrand;
 	
-	@Column(name="frame_price")
-	private double frame_price;
+	@Column(name="framePrice")
+	private double framePrice;
 	
 	@ManyToOne
-	@JoinColumn(name="cart_id")
+	@JoinColumn(name="cartId")
     @JsonBackReference
 	private Cart cart;
 	
@@ -62,57 +53,47 @@ public Frames() {
 		this.cart = cart;
 	}
 
+	public int getFrameId() {
+		return frameId;
+	}
+
+	public void setFrameId(int frameId) {
+		this.frameId = frameId;
+	}
+
+	public String getFrameShape() {
+		return frameShape;
+	}
+
+	public void setFrameShape(String frameShape) {
+		this.frameShape = frameShape;
+	}
+
+	public String getFrameColour() {
+		return frameColour;
+	}
+
+	public void setFrameColour(String frameColour) {
+		this.frameColour = frameColour;
+	}
+
+	public String getFrameBrand() {
+		return frameBrand;
+	}
+
+	public void setFrameBrand(String frameBrand) {
+		this.frameBrand = frameBrand;
+	}
+
+	public double getFramePrice() {
+		return framePrice;
+	}
+
+	public void setFramePrice(double framePrice) {
+		this.framePrice = framePrice;
+	}
+
 	
-
-	public int getFrame_id() {
-		return frame_id;
-	}
-
-	public void setFrame_id(int frame_id) {
-		this.frame_id = frame_id;
-	}
-
-	public String getFrame_shape() {
-		return frame_shape;
-	}
-
-	public void setFrame_shape(String frame_shape) {
-		this.frame_shape = frame_shape;
-	}
-
-	public String getFrame_colour() {
-		return frame_colour;
-	}
-
-	public void setFrame_colour(String frame_colour) {
-		this.frame_colour = frame_colour;
-	}
-
-	public String getFrame_brand() {
-		return frame_brand;
-	}
-
-	public void setFrame_brand(String frame_brand) {
-		this.frame_brand = frame_brand;
-	}
-
-	public double getFrame_price() {
-		return frame_price;
-	}
-
-	public void setFrame_price(double frame_price) {
-		this.frame_price = frame_price;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "Frames [frame_id=" + frame_id + ", frame_shape=" + frame_shape + ", frame_colour=" + frame_colour
-				+ ", frame_brand=" + frame_brand + ", frame_price=" + frame_price + "]";
-	}
 
 	
 

@@ -21,7 +21,7 @@ public class Cart  implements Serializable    {
 	private static final long serialVersionUID = 1L;
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int cart_id;
+private int cartId;
 
 
 
@@ -34,7 +34,7 @@ private List<Frames> frames;
 private List<Lenses> lenses;
 
 @OneToOne(targetEntity = Customer.class)
-@JoinColumn(name = "customer_id",unique = true)
+@JoinColumn(name = "customerId",unique = true)
 private Customer customer;
 
 public Customer getCustomer() {
@@ -49,17 +49,12 @@ public Cart() {
 	
 }
 
-public Cart(int cart_id, int quantity, double price, List<Frames> frames, List<Lenses> lenses) {
-	this.cart_id = cart_id;
-	
-	this.frames = frames;
-	this.lenses = lenses;
+
+public int getCartId() {
+	return cartId;
 }
-public int getCart_id() {
-	return cart_id;
-}
-public void setCart_id(int cart_id) {
-	this.cart_id = cart_id;
+public void setCartId(int cartId) {
+	this.cartId = cartId;
 }
 
 
@@ -78,7 +73,7 @@ public void setLenses(List<Lenses> lenses) {
 }
 @Override
 public String toString() {
-	return "Cart [cart_id=" + cart_id + " frames=" + frames
+	return "Cart [cartId=" + cartId + " frames=" + frames
 			+ ", lenses=" + lenses + "]";
 }
 

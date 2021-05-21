@@ -38,13 +38,13 @@ public class OrdersController {
 		return new ResponseEntity<List<Orders>>(ordersList,HttpStatus.OK);
 	}
 	@DeleteMapping("/deleteorder")
-	public ResponseEntity<String> deleteOrders(@RequestParam int order_id) throws OrdersNotFoundException{
-		String str=service.deleteOrder(order_id);
+	public ResponseEntity<String> deleteOrders(@RequestParam int orderId) throws OrdersNotFoundException{
+		String str=service.deleteOrder(orderId);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 	@PutMapping("/updateorder/{code}")
-	public ResponseEntity<String> modifyOrder(@RequestParam int order_id,@RequestBody Orders order) throws OrdersNotFoundException{
-		String str=service.modifyOrder(order_id, order);
+	public ResponseEntity<String> modifyOrder(@RequestParam int orderId,@RequestBody Orders order) throws OrdersNotFoundException{
+		String str=service.modifyOrder(orderId, order);
 		return new ResponseEntity<String>(str,HttpStatus.OK);
 	}
 }

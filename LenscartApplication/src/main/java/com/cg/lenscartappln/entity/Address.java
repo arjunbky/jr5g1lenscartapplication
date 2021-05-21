@@ -12,13 +12,13 @@ import javax.persistence.Table;
 public class Address {
 	@Id
 	@Column(nullable = false,unique = true)
-	private int address_id;
+	private int addressId;
 	
-	@Column(name ="House_number")
-	private String house_number;
+	@Column(name ="HouseNumber")
+	private String houseNumber;
 	
-	@Column (name=" Street_name",length=20)
-	private String street_name;
+	@Column (name=" StreetName",length=20)
+	private String streetName;
 	
 	@Column (name="City ",length=20)
 	private String city;
@@ -32,28 +32,29 @@ public class Address {
 	
 	private String message;
 
-	public int getAddress_id() {
-		return address_id;
+	
+	public int getAddressId() {
+		return addressId;
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
 
-	public String getHouse_number() {
-		return house_number;
+	public String getHouseNumber() {
+		return houseNumber;
 	}
 
-	public void setHouse_number(String house_number) {
-		this.house_number = house_number;
+	public void setHouseNumber(String houseNumber) {
+		this.houseNumber = houseNumber;
 	}
 
-	public String getStreet_name() {
-		return street_name;
+	public String getStreetName() {
+		return streetName;
 	}
 
-	public void setStreet_name(String street_name) {
-		this.street_name = street_name;
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
 	}
 
 	public String getCity() {

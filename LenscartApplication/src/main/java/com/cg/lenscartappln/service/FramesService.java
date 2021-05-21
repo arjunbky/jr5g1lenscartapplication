@@ -19,13 +19,13 @@ public class FramesService implements IFramesService {
 	@Autowired
 	IFramesDao framesDao;
 //** method to add the frame details to the Frames table**
-	public void addFrames(FramesDto framesdto) {
+	public void addFrames(FramesDto framesDto) {
 		ObjectMapper mapper=new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		Frames frameObj=new Frames();
-		frameObj=mapper.convertValue(framesdto, Frames.class);
+		frameObj=mapper.convertValue(framesDto, Frames.class);
 		Cart cart=new Cart();
-		cart.setCart_id(1);
+		cart.setCartId(1);
 		frameObj.setCart(cart);
 		framesDao.save(frameObj);
 	}
@@ -37,11 +37,11 @@ public class FramesService implements IFramesService {
 		return framesList;
 	}
 //**method to delete the frame details based on frame_id**
-	public String deleteFrames(int frame_id) throws FrameNotFoundException {
+	public String deleteFrames(int frameId) throws FrameNotFoundException {
 		List<Frames> frameList=framesDao.findAll();
 		for (Frames frame:frameList) {
-		if(frame.getFrame_id()==frame_id) {
-			framesDao.deleteById(frame_id);
+		if(frame.getFrameId()==frameId) {
+			framesDao.deleteById(frameId);
 			return "Frame deleted";
 		}
 		}
@@ -49,12 +49,12 @@ public class FramesService implements IFramesService {
 	
 	}
 //** method to update the existing frame based on frame_id**
-	public String modifyFrames(int frame_id,Frames frames) throws FrameNotFoundException {
-		if(framesDao.existsById(frame_id)) {
-			Frames frame=framesDao.findById(frame_id).get();
-			frame.setFrame_shape(frames.getFrame_shape());
-			frame.setFrame_colour(frames.getFrame_colour());
-			frame.setFrame_brand(frames.getFrame_brand());
+	public String modifyFrames(int frameId,Frames frames) throws FrameNotFoundException {
+		if(framesDao.existsById(frameId)) {
+			Frames frame=framesDao.findById(frameId).get();
+			frame.setFrameShape(frames.getFrameShape());
+			frame.setFrameColour(frames.getFrameColour());
+			frame.setFrameBrand(frames.getFrameBrand());
 			framesDao.save(frames);
 			return "Frame updated";
 		}
@@ -62,8 +62,8 @@ public class FramesService implements IFramesService {
 			throw new FrameNotFoundException();
 	}
 //**method to get the frame by ID**
-public Frames getFrameById(int frame_id) {
-	return framesDao.getFrameById(frame_id);
+public Frames getFrameById(int frameId) {
+	return framesDao.getFrameById(frameId);
 }
 
 

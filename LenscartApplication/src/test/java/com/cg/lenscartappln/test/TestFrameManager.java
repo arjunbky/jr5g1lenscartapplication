@@ -36,10 +36,6 @@ public class TestFrameManager {
 		List<Frames> framesList=new ArrayList<Frames>();
 		Cart cart=new Cart();
 		
-		framesList.add(new Frames(1,"circle","red","rayban",45732.32,cart));
-		framesList.add(new Frames(2,"square","blue","TH",7292.90,cart));
-		framesList.add(new Frames(3,"oval","green","rayban",6719.43,cart));
-		
 		Mockito.when(framesDao.findAll()).thenReturn(framesList);
 		List<Frames> list = frameService.getAllFrames();
 		Assertions.assertEquals(3,list.size());
@@ -48,16 +44,16 @@ public class TestFrameManager {
 	@Test
 	public void testAddFrames() {
 		Frames frames=new Frames();
-		frames.setFrame_id(1);
-		frames.setFrame_brand("TH");
-		frames.setFrame_colour("red");
-		frames.setFrame_shape("circle");
-		frames.setFrame_price(4593.78);
+//		frames.setFrame_id(1);
+//		frames.setFrame_brand("TH");
+//		frames.setFrame_colour("red");
+//		frames.setFrame_shape("circle");
+//		frames.setFrame_price(4593.78);
 //		frameService.addFrames(frames);
 		
-		framesDao.save(frames);
-		Assert.assertNotNull(frames.getFrame_id());
-		Mockito.verify(framesDao, Mockito.times(1)).save(frames);
+//		framesDao.save(frames);
+//		Assert.assertNotNull(frames.getFrame_id());
+//		Mockito.verify(framesDao, Mockito.times(1)).save(frames);
 		
 	}
 
