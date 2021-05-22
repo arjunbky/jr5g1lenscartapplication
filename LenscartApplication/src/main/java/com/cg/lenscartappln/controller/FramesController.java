@@ -42,8 +42,8 @@ public class FramesController {
 		}
 		
 		@DeleteMapping("/deleteframes/{frameId}")
-		public ResponseEntity<String> deleteFrames(@PathVariable("frameId") int frame_id) throws FrameNotFoundException{
-			service.deleteFrames(frame_id);
+		public ResponseEntity<String> deleteFrames(@PathVariable("frameId") int frameId) throws FrameNotFoundException{
+			service.deleteFrames(frameId);
 			return new ResponseEntity<String>("frame deleted",HttpStatus.OK);
 		}
 		@PutMapping("/updateframes/{code}")
