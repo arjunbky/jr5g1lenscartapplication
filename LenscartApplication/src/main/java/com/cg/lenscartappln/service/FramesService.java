@@ -20,14 +20,18 @@ public class FramesService implements IFramesService {
 	IFramesDao framesDao;
 //** method to add the frame details to the Frames table**
 	public void addFrames(FramesDto framesDto) {
+		Frames frames =new Frames();
 		ObjectMapper mapper=new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		Frames frameObj=new Frames();
 		frameObj=mapper.convertValue(framesDto, Frames.class);
+		framesDao.save(frameObj);
 		Cart cart=new Cart();
 		cart.setCartId(1);
-		frameObj.setCart(cart);
-		framesDao.save(frameObj);
+		frames.setCart(cart);
+		framesDao.save(frames);
+		
+		
 	}
 	
 		
